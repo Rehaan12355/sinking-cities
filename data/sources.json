@@ -1,152 +1,442 @@
 {
-  "census_blocks": {
-    "bytes": 11132928,
-    "file": "data/work/blocks.gpkg",
+  "charleston/census_blocks": {
+    "bytes": 8036352,
+    "file": "data/work/charleston/blocks.gpkg",
     "licence": "US Government work, public domain",
     "note": "Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.",
     "retrieved": "2026-11-14",
     "status": "ok",
-    "title": "2020 Census blocks and population (populated blocks only)",
+    "title": "Charleston: 2020 Census blocks and population (populated blocks only)",
     "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query"
   },
-  "census_tracts_550": {
-    "bytes": 635338,
-    "file": "data/raw/tracts_550.geojson",
+  "charleston/census_tracts_015": {
+    "bytes": 1455747,
+    "file": "data/raw/charleston/tracts_015.geojson",
     "licence": "US Government work, public domain",
     "note": "",
     "retrieved": "2026-11-14",
     "status": "ok",
-    "title": "2020 Census tracts and population, Chesapeake",
-    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='550'&f=geojson"
+    "title": "Charleston: 2020 Census tracts and population, Berkeley County",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='45' AND COUNTY='015'&f=geojson"
   },
-  "census_tracts_650": {
-    "bytes": 354700,
-    "file": "data/raw/tracts_650.geojson",
+  "charleston/census_tracts_019": {
+    "bytes": 1982530,
+    "file": "data/raw/charleston/tracts_019.geojson",
     "licence": "US Government work, public domain",
     "note": "",
     "retrieved": "2026-11-14",
     "status": "ok",
-    "title": "2020 Census tracts and population, Hampton",
-    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='650'&f=geojson"
+    "title": "Charleston: 2020 Census tracts and population, Charleston County",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='45' AND COUNTY='019'&f=geojson"
   },
-  "census_tracts_700": {
-    "bytes": 319020,
-    "file": "data/raw/tracts_700.geojson",
+  "charleston/census_tracts_035": {
+    "bytes": 721233,
+    "file": "data/raw/charleston/tracts_035.geojson",
     "licence": "US Government work, public domain",
     "note": "",
     "retrieved": "2026-11-14",
     "status": "ok",
-    "title": "2020 Census tracts and population, Newport News",
-    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='700'&f=geojson"
+    "title": "Charleston: 2020 Census tracts and population, Dorchester County",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='45' AND COUNTY='035'&f=geojson"
   },
-  "census_tracts_710": {
-    "bytes": 417374,
-    "file": "data/raw/tracts_710.geojson",
-    "licence": "US Government work, public domain",
-    "note": "",
-    "retrieved": "2026-11-14",
-    "status": "ok",
-    "title": "2020 Census tracts and population, Norfolk",
-    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='710'&f=geojson"
-  },
-  "census_tracts_735": {
-    "bytes": 61258,
-    "file": "data/raw/tracts_735.geojson",
-    "licence": "US Government work, public domain",
-    "note": "",
-    "retrieved": "2026-11-14",
-    "status": "ok",
-    "title": "2020 Census tracts and population, Poquoson",
-    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='735'&f=geojson"
-  },
-  "census_tracts_740": {
-    "bytes": 180063,
-    "file": "data/raw/tracts_740.geojson",
-    "licence": "US Government work, public domain",
-    "note": "",
-    "retrieved": "2026-11-14",
-    "status": "ok",
-    "title": "2020 Census tracts and population, Portsmouth",
-    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='740'&f=geojson"
-  },
-  "census_tracts_810": {
-    "bytes": 775874,
-    "file": "data/raw/tracts_810.geojson",
-    "licence": "US Government work, public domain",
-    "note": "",
-    "retrieved": "2026-11-14",
-    "status": "ok",
-    "title": "2020 Census tracts and population, Virginia Beach",
-    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='810'&f=geojson"
-  },
-  "nasa_ar6_sea_level": {
-    "bytes": 88711,
-    "file": "data/raw/nasa_ar6_projection.json",
+  "charleston/nasa_ar6_sea_level": {
+    "bytes": 88593,
+    "file": "data/raw/charleston/nasa_ar6_projection.json",
     "licence": "CC BY 4.0 (IPCC AR6 sea level projections, Garner et al. 2021)",
     "note": "Data service behind sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool. Medium-confidence projections, relative to 1995-2014.",
     "retrieved": "2026-11-14",
     "status": "ok",
-    "title": "NASA Sea Level Projection Tool (IPCC AR6), PSMSL 299",
-    "url": "https://d3qt3aobtsas2h.cloudfront.net/edge/ws/search/projection?psmsl_id=299"
+    "title": "Charleston: NASA Sea Level Projection Tool (IPCC AR6), PSMSL 234",
+    "url": "https://d3qt3aobtsas2h.cloudfront.net/edge/ws/search/projection?psmsl_id=234"
   },
-  "ngl_midas_gps": {
+  "charleston/ngl_midas_gps": {
     "bytes": 5021832,
-    "file": "data/raw/midas.IGS14.txt",
+    "file": "data/raw/charleston/midas.IGS14.txt",
     "licence": "Open; cite Blewitt et al. 2016, doi:10.1002/2015JB012552",
     "note": "",
     "retrieved": "2026-11-14",
     "status": "ok",
-    "title": "Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14)",
+    "title": "Charleston: Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14)",
     "url": "https://geodesy.unr.edu/velocities/midas.IGS14.txt"
   },
-  "noaa_datums": {
-    "bytes": 2213,
-    "file": "data/raw/noaa_datums.json",
+  "charleston/nisar_gunw": {
+    "bytes": null,
+    "file": null,
+    "licence": "NASA open data (CC0); NASA-ISRO NISAR mission",
+    "note": "Short name NISAR_L2_GUNW_PROVISIONAL_V1 at the Alaska Satellite Facility DAAC (Earthdata login), doi:10.5067/NIL2GUNW-P1. Only the study-area window of five layers was read from each ~2.2 GB file (18 MB kept in data/work/charleston/nisar/). Granules: NISAR_L2_PR_GUNW_023_098_D_072_024_4000_SH_20260621T001121_20260621T001156_20260703T001120_20260703T001155_P05023_N_F_J_001; NISAR_L2_PR_GUNW_024_098_D_072_025_4000_SH_20260703T001120_20260703T001155_20260715T001120_20260715T001154_P05023_F_F_J_001; NISAR_L2_PR_GUNW_025_098_D_072_026_4000_SH_20260715T001120_20260715T001154_20260727T001119_20260727T001154_P05023_N_F_J_001; NISAR_L2_PR_GUNW_026_098_D_072_028_4000_SH_20260727T001119_20260727T001154_20260820T001118_20260820T001152_P05023_N_F_J_001; NISAR_L2_PR_GUNW_028_098_D_072_029_4000_SH_20260820T001118_20260820T001152_20260901T001117_20260901T001152_P05023_N_F_J_001; NISAR_L2_PR_GUNW_029_098_D_072_030_4000_SH_20260901T001117_20260901T001152_20260913T001117_20260913T001152_P05023_N_F_J_001; NISAR_L2_PR_GUNW_030_098_D_072_031_4000_SH_20260913T001117_20260913T001152_20260925T001117_20260925T001152_P05023_N_F_J_001; NISAR_L2_PR_GUNW_031_098_D_072_032_4000_SH_20260925T001117_20260925T001152_20261007T001117_20261007T001152_P05023_N_F_J_001; NISAR_L2_PR_GUNW_032_098_D_072_033_4000_SH_20261007T001117_20261007T001152_20261019T001117_20261019T001152_P05023_N_F_J_001",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Charleston: NISAR L2 Geocoded Unwrapped Interferograms (provisional), track/frame 098_D_072, 9 pairs 20260621 to 20261019, study-area subset",
+    "url": "https://search.asf.alaska.edu/#/?dataset=NISAR&productTypes=GUNW"
+  },
+  "charleston/noaa_datums": {
+    "bytes": 2219,
+    "file": "data/raw/charleston/noaa_datums.json",
     "licence": "US Government work, public domain",
     "note": "",
     "retrieved": "2026-11-14",
     "status": "ok",
-    "title": "NOAA tidal datums, station 8638610",
-    "url": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8638610/datums.json"
+    "title": "Charleston: NOAA tidal datums, station 8665530",
+    "url": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8665530/datums.json"
   },
-  "noaa_floodlevels": {
-    "bytes": 262,
-    "file": "data/raw/noaa_floodlevels.json",
+  "charleston/noaa_floodlevels": {
+    "bytes": 261,
+    "file": "data/raw/charleston/noaa_floodlevels.json",
     "licence": "US Government work, public domain",
     "note": "",
     "retrieved": "2026-11-14",
     "status": "ok",
-    "title": "NOAA high-tide-flood thresholds, station 8638610",
-    "url": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8638610/floodlevels.json"
+    "title": "Charleston: NOAA high-tide-flood thresholds, station 8665530",
+    "url": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8665530/floodlevels.json"
   },
-  "noaa_htf_annual": {
-    "bytes": 28808,
-    "file": "data/raw/noaa_htf_annual.json",
+  "charleston/noaa_htf_annual": {
+    "bytes": 28630,
+    "file": "data/raw/charleston/noaa_htf_annual.json",
     "licence": "US Government work, public domain",
     "note": "",
     "retrieved": "2026-11-14",
     "status": "ok",
-    "title": "NOAA observed annual high-tide-flood days, station 8638610",
-    "url": "https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station=8638610"
+    "title": "Charleston: NOAA observed annual high-tide-flood days, station 8665530",
+    "url": "https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station=8665530"
   },
-  "osm_places": {
-    "bytes": 165745,
-    "file": "data/raw/osm_places.json",
+  "charleston/opera_disp_s1": {
+    "bytes": null,
+    "file": null,
+    "licence": "NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA",
+    "note": "Short name OPERA_L3_DISP-S1_V1 at the Alaska Satellite Facility DAAC (Earthdata login). Only the chunks over the study area were read from each ~440 MB file; subset stored on a 90 m grid in data/work/charleston/opera/ (78 MB).",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Charleston: NASA OPERA L3 DISP-S1 v1 surface displacement, frame F40029 (254 dates, 20161016 to 20251110), study-area subset",
+    "url": "https://search.asf.alaska.edu/#/?dataset=OPERA-S1&productTypes=DISP-S1"
+  },
+  "charleston/opera_disp_s1_static": {
+    "bytes": 19878752,
+    "file": "data/raw/charleston/opera_F40029_los_enu.tif",
+    "licence": "NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA",
+    "note": "Used to convert line-of-sight motion to vertical. doi:10.5067/SNWG/OPL3DISPS1-V1",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Charleston: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F40029",
+    "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L3_DISP-S1-STATIC_V1/OPERA_L3_DISP-S1-STATIC_F40029_20140403_S1A_v1.0/OPERA_L3_DISP-S1-STATIC_F40029_20140403_S1A_v1.0_line_of_sight_enu.tif"
+  },
+  "charleston/osm_places": {
+    "bytes": 68980,
+    "file": "data/raw/charleston/osm_places.json",
     "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
     "note": "Used only to label census tracts with a familiar nearby place name.",
     "retrieved": "2026-11-14",
     "status": "ok",
-    "title": "OpenStreetMap neighbourhood names (labels only)",
+    "title": "Charleston: OpenStreetMap neighbourhood names (labels only)",
     "url": "https://overpass-api.de/api/interpreter"
   },
-  "usgs_3dep_dem": {
-    "bytes": 106732655,
-    "file": "data/work/dem.tif",
+  "charleston/usgs_3dep_dem": {
+    "bytes": 50229940,
+    "file": "data/work/charleston/dem.tif",
     "licence": "US Government work, public domain",
     "note": "Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.",
     "retrieved": "2026-11-14",
     "status": "ok",
-    "title": "USGS 3DEP bare-earth elevation, resampled to 10 m (16 tiles)",
+    "title": "Charleston: USGS 3DEP bare-earth elevation, resampled to 10 m (9 tiles)",
+    "url": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage"
+  },
+  "hampton-roads/census_blocks": {
+    "bytes": 11132928,
+    "file": "data/work/hampton-roads/blocks.gpkg",
+    "licence": "US Government work, public domain",
+    "note": "Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: 2020 Census blocks and population (populated blocks only)",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query"
+  },
+  "hampton-roads/census_tracts_550": {
+    "bytes": 635338,
+    "file": "data/raw/hampton-roads/tracts_550.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: 2020 Census tracts and population, Chesapeake",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='550'&f=geojson"
+  },
+  "hampton-roads/census_tracts_650": {
+    "bytes": 354700,
+    "file": "data/raw/hampton-roads/tracts_650.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: 2020 Census tracts and population, Hampton",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='650'&f=geojson"
+  },
+  "hampton-roads/census_tracts_700": {
+    "bytes": 319020,
+    "file": "data/raw/hampton-roads/tracts_700.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: 2020 Census tracts and population, Newport News",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='700'&f=geojson"
+  },
+  "hampton-roads/census_tracts_710": {
+    "bytes": 417374,
+    "file": "data/raw/hampton-roads/tracts_710.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: 2020 Census tracts and population, Norfolk",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='710'&f=geojson"
+  },
+  "hampton-roads/census_tracts_735": {
+    "bytes": 61258,
+    "file": "data/raw/hampton-roads/tracts_735.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: 2020 Census tracts and population, Poquoson",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='735'&f=geojson"
+  },
+  "hampton-roads/census_tracts_740": {
+    "bytes": 180063,
+    "file": "data/raw/hampton-roads/tracts_740.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: 2020 Census tracts and population, Portsmouth",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='740'&f=geojson"
+  },
+  "hampton-roads/census_tracts_810": {
+    "bytes": 775874,
+    "file": "data/raw/hampton-roads/tracts_810.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: 2020 Census tracts and population, Virginia Beach",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='810'&f=geojson"
+  },
+  "hampton-roads/nasa_ar6_sea_level": {
+    "bytes": 88711,
+    "file": "data/raw/hampton-roads/nasa_ar6_projection.json",
+    "licence": "CC BY 4.0 (IPCC AR6 sea level projections, Garner et al. 2021)",
+    "note": "Data service behind sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool. Medium-confidence projections, relative to 1995-2014.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: NASA Sea Level Projection Tool (IPCC AR6), PSMSL 299",
+    "url": "https://d3qt3aobtsas2h.cloudfront.net/edge/ws/search/projection?psmsl_id=299"
+  },
+  "hampton-roads/ngl_midas_gps": {
+    "bytes": 5021832,
+    "file": "data/raw/hampton-roads/midas.IGS14.txt",
+    "licence": "Open; cite Blewitt et al. 2016, doi:10.1002/2015JB012552",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14)",
+    "url": "https://geodesy.unr.edu/velocities/midas.IGS14.txt"
+  },
+  "hampton-roads/nisar_gunw": {
+    "bytes": null,
+    "file": null,
+    "licence": "NASA open data (CC0); NASA-ISRO NISAR mission",
+    "note": "Short name NISAR_L2_GUNW_PROVISIONAL_V1 at the Alaska Satellite Facility DAAC (Earthdata login), doi:10.5067/NIL2GUNW-P1. Only the study-area window of five layers was read from each ~2.2 GB file (61 MB kept in data/work/hampton-roads/nisar/). Granules: NISAR_L2_PR_GUNW_023_069_D_070_024_4000_SH_20260618T235335_20260618T235409_20260630T235334_20260630T235409_P05023_N_F_J_001; NISAR_L2_PR_GUNW_024_069_D_070_025_4000_SH_20260630T235334_20260630T235409_20260712T235333_20260712T235408_P05023_N_F_J_001; NISAR_L2_PR_GUNW_025_069_D_070_026_4000_SH_20260712T235333_20260712T235408_20260724T235332_20260724T235407_P05023_N_F_J_001; NISAR_L2_PR_GUNW_026_069_D_070_028_4000_SH_20260724T235332_20260724T235407_20260817T235331_20260817T235406_P05023_N_F_J_001; NISAR_L2_PR_GUNW_028_069_D_070_029_4000_SH_20260817T235331_20260817T235406_20260829T235331_20260829T235406_P05023_N_F_J_001; NISAR_L2_PR_GUNW_029_069_D_070_030_4000_SH_20260829T235331_20260829T235406_20260910T235331_20260910T235406_P05023_N_F_J_001; NISAR_L2_PR_GUNW_030_069_D_070_031_4000_SH_20260910T235331_20260910T235406_20260922T235331_20260922T235406_P05023_N_F_J_001; NISAR_L2_PR_GUNW_031_069_D_070_032_4000_SH_20260922T235331_20260922T235406_20261004T235331_20261004T235406_P05023_N_F_J_001; NISAR_L2_PR_GUNW_032_069_D_070_033_4000_SH_20261004T235331_20261004T235406_20261016T235331_20261016T235406_P05023_N_F_J_001",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: NISAR L2 Geocoded Unwrapped Interferograms (provisional), track/frame 069_D_070, 9 pairs 20260618 to 20261016, study-area subset",
+    "url": "https://search.asf.alaska.edu/#/?dataset=NISAR&productTypes=GUNW"
+  },
+  "hampton-roads/noaa_datums": {
+    "bytes": 2213,
+    "file": "data/raw/hampton-roads/noaa_datums.json",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: NOAA tidal datums, station 8638610",
+    "url": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8638610/datums.json"
+  },
+  "hampton-roads/noaa_floodlevels": {
+    "bytes": 262,
+    "file": "data/raw/hampton-roads/noaa_floodlevels.json",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: NOAA high-tide-flood thresholds, station 8638610",
+    "url": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8638610/floodlevels.json"
+  },
+  "hampton-roads/noaa_htf_annual": {
+    "bytes": 28808,
+    "file": "data/raw/hampton-roads/noaa_htf_annual.json",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: NOAA observed annual high-tide-flood days, station 8638610",
+    "url": "https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station=8638610"
+  },
+  "hampton-roads/opera_disp_s1": {
+    "bytes": null,
+    "file": null,
+    "licence": "NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA",
+    "note": "Short name OPERA_L3_DISP-S1_V1 at the Alaska Satellite Facility DAAC (Earthdata login). Only the chunks over the study area were read from each ~440 MB file; subset stored on a 90 m grid in data/work/opera/ (233 MB).",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: NASA OPERA L3 DISP-S1 v1 surface displacement, frame F00833 (269 dates, 20160924 to 20260204), study-area subset",
+    "url": "https://search.asf.alaska.edu/#/?dataset=OPERA-S1&productTypes=DISP-S1"
+  },
+  "hampton-roads/opera_disp_s1_static": {
+    "bytes": 18901178,
+    "file": "data/raw/hampton-roads/opera_F00833_los_enu.tif",
+    "licence": "NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA",
+    "note": "Used to convert line-of-sight motion to vertical. doi:10.5067/SNWG/OPL3DISPS1-V1",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F00833",
+    "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L3_DISP-S1-STATIC_V1/OPERA_L3_DISP-S1-STATIC_F00833_20140403_S1A_v1.0/OPERA_L3_DISP-S1-STATIC_F00833_20140403_S1A_v1.0_line_of_sight_enu.tif"
+  },
+  "hampton-roads/osm_places": {
+    "bytes": 165745,
+    "file": "data/raw/hampton-roads/osm_places.json",
+    "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+    "note": "Used only to label census tracts with a familiar nearby place name.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: OpenStreetMap neighbourhood names (labels only)",
+    "url": "https://overpass-api.de/api/interpreter"
+  },
+  "hampton-roads/usgs_3dep_dem": {
+    "bytes": 106732655,
+    "file": "data/work/hampton-roads/dem.tif",
+    "licence": "US Government work, public domain",
+    "note": "Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Hampton Roads: USGS 3DEP bare-earth elevation, resampled to 10 m (16 tiles)",
+    "url": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage"
+  },
+  "seattle/census_blocks": {
+    "bytes": 3252224,
+    "file": "data/work/seattle/blocks.gpkg",
+    "licence": "US Government work, public domain",
+    "note": "Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Seattle: 2020 Census blocks and population (populated blocks only)",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query"
+  },
+  "seattle/census_tracts_033": {
+    "bytes": 4383209,
+    "file": "data/raw/seattle/tracts_033.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Seattle: 2020 Census tracts and population, Seattle area",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='53' AND COUNTY='033'&f=geojson"
+  },
+  "seattle/nasa_ar6_sea_level": {
+    "bytes": 88508,
+    "file": "data/raw/seattle/nasa_ar6_projection.json",
+    "licence": "CC BY 4.0 (IPCC AR6 sea level projections, Garner et al. 2021)",
+    "note": "Data service behind sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool. Medium-confidence projections, relative to 1995-2014.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Seattle: NASA Sea Level Projection Tool (IPCC AR6), PSMSL 127",
+    "url": "https://d3qt3aobtsas2h.cloudfront.net/edge/ws/search/projection?psmsl_id=127"
+  },
+  "seattle/ngl_midas_gps": {
+    "bytes": 5021832,
+    "file": "data/raw/seattle/midas.IGS14.txt",
+    "licence": "Open; cite Blewitt et al. 2016, doi:10.1002/2015JB012552",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Seattle: Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14)",
+    "url": "https://geodesy.unr.edu/velocities/midas.IGS14.txt"
+  },
+  "seattle/nisar_gunw": {
+    "bytes": null,
+    "file": null,
+    "licence": "NASA open data (CC0); NASA-ISRO NISAR mission",
+    "note": "Short name NISAR_L2_GUNW_PROVISIONAL_V1 at the Alaska Satellite Facility DAAC (Earthdata login), doi:10.5067/NIL2GUNW-P1. Only the study-area window of five layers was read from each ~2.2 GB file (6 MB kept in data/work/seattle/nisar/). Granules: NISAR_L2_PR_GUNW_023_106_A_026_024_4000_SH_20260621T130404_20260621T130439_20260703T130403_20260703T130438_P05023_N_F_J_001; NISAR_L2_PR_GUNW_024_106_A_026_025_4000_SH_20260703T130403_20260703T130438_20260715T130403_20260715T130438_P05023_N_F_J_001; NISAR_L2_PR_GUNW_025_106_A_026_026_4000_SH_20260715T130403_20260715T130438_20260727T130402_20260727T130437_P05023_N_F_J_001; NISAR_L2_PR_GUNW_026_106_A_026_028_4000_SH_20260727T130402_20260727T130437_20260820T130401_20260820T130436_P05023_N_F_J_001; NISAR_L2_PR_GUNW_028_106_A_026_029_4000_SH_20260820T130401_20260820T130436_20260901T130400_20260901T130436_P05023_N_F_J_001; NISAR_L2_PR_GUNW_029_106_A_026_030_4000_SH_20260901T130400_20260901T130436_20260913T130400_20260913T130435_P05023_N_F_J_001; NISAR_L2_PR_GUNW_030_106_A_026_031_4000_SH_20260913T130400_20260913T130435_20260925T130400_20260925T130436_P05023_N_F_J_001; NISAR_L2_PR_GUNW_031_106_A_026_032_4000_SH_20260925T130400_20260925T130436_20261007T130400_20261007T130436_P05023_N_F_J_001; NISAR_L2_PR_GUNW_032_106_A_026_033_4000_SH_20261007T130400_20261007T130436_20261019T130401_20261019T130436_P05023_N_F_J_001",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Seattle: NISAR L2 Geocoded Unwrapped Interferograms (provisional), track/frame 106_A_026, 9 pairs 20260621 to 20261019, study-area subset",
+    "url": "https://search.asf.alaska.edu/#/?dataset=NISAR&productTypes=GUNW"
+  },
+  "seattle/noaa_datums": {
+    "bytes": 2225,
+    "file": "data/raw/seattle/noaa_datums.json",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Seattle: NOAA tidal datums, station 9447130",
+    "url": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9447130/datums.json"
+  },
+  "seattle/noaa_floodlevels": {
+    "bytes": 261,
+    "file": "data/raw/seattle/noaa_floodlevels.json",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Seattle: NOAA high-tide-flood thresholds, station 9447130",
+    "url": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9447130/floodlevels.json"
+  },
+  "seattle/noaa_htf_annual": {
+    "bytes": 28079,
+    "file": "data/raw/seattle/noaa_htf_annual.json",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Seattle: NOAA observed annual high-tide-flood days, station 9447130",
+    "url": "https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station=9447130"
+  },
+  "seattle/opera_disp_s1": {
+    "bytes": null,
+    "file": null,
+    "licence": "NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA",
+    "note": "Short name OPERA_L3_DISP-S1_V1 at the Alaska Satellite Facility DAAC (Earthdata login). Only the chunks over the study area were read from each ~440 MB file; subset stored on a 90 m grid in data/work/seattle/opera/ (19 MB).",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Seattle: NASA OPERA L3 DISP-S1 v1 surface displacement, frame F03321 (164 dates, 20160808 to 20250926), study-area subset",
+    "url": "https://search.asf.alaska.edu/#/?dataset=OPERA-S1&productTypes=DISP-S1"
+  },
+  "seattle/opera_disp_s1_static": {
+    "bytes": 19254513,
+    "file": "data/raw/seattle/opera_F03321_los_enu.tif",
+    "licence": "NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA",
+    "note": "Used to convert line-of-sight motion to vertical. doi:10.5067/SNWG/OPL3DISPS1-V1",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Seattle: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F03321",
+    "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L3_DISP-S1-STATIC_V1/OPERA_L3_DISP-S1-STATIC_F03321_20140403_S1A_v1.0/OPERA_L3_DISP-S1-STATIC_F03321_20140403_S1A_v1.0_line_of_sight_enu.tif"
+  },
+  "seattle/osm_places": {
+    "bytes": 29983,
+    "file": "data/raw/seattle/osm_places.json",
+    "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+    "note": "Used only to label census tracts with a familiar nearby place name.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Seattle: OpenStreetMap neighbourhood names (labels only)",
+    "url": "https://overpass-api.de/api/interpreter"
+  },
+  "seattle/usgs_3dep_dem": {
+    "bytes": 11761571,
+    "file": "data/work/seattle/dem.tif",
+    "licence": "US Government work, public domain",
+    "note": "Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Seattle: USGS 3DEP bare-earth elevation, resampled to 10 m (2 tiles)",
     "url": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage"
   }
 }

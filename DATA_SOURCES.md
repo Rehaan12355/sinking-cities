@@ -6,40 +6,115 @@ is unavailable the site says so instead of showing a value.
 
 | Key | Dataset | Retrieved | Size | Licence | Status |
 |---|---|---|---|---|---|
-| `census_blocks` | 2020 Census blocks and population (populated blocks only) | 2026-11-14 | 11.13 MB | US Government work, public domain | ok |
-| `census_tracts_550` | 2020 Census tracts and population, Chesapeake | 2026-11-14 | 0.64 MB | US Government work, public domain | ok |
-| `census_tracts_650` | 2020 Census tracts and population, Hampton | 2026-11-14 | 0.35 MB | US Government work, public domain | ok |
-| `census_tracts_700` | 2020 Census tracts and population, Newport News | 2026-11-14 | 0.32 MB | US Government work, public domain | ok |
-| `census_tracts_710` | 2020 Census tracts and population, Norfolk | 2026-11-14 | 0.42 MB | US Government work, public domain | ok |
-| `census_tracts_735` | 2020 Census tracts and population, Poquoson | 2026-11-14 | 0.06 MB | US Government work, public domain | ok |
-| `census_tracts_740` | 2020 Census tracts and population, Portsmouth | 2026-11-14 | 0.18 MB | US Government work, public domain | ok |
-| `census_tracts_810` | 2020 Census tracts and population, Virginia Beach | 2026-11-14 | 0.78 MB | US Government work, public domain | ok |
-| `nasa_ar6_sea_level` | NASA Sea Level Projection Tool (IPCC AR6), PSMSL 299 | 2026-11-14 | 0.09 MB | CC BY 4.0 (IPCC AR6 sea level projections, Garner et al. 2021) | ok |
-| `ngl_midas_gps` | Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14) | 2026-11-14 | 5.02 MB | Open; cite Blewitt et al. 2016, doi:10.1002/2015JB012552 | ok |
-| `noaa_datums` | NOAA tidal datums, station 8638610 | 2026-11-14 | 0.00 MB | US Government work, public domain | ok |
-| `noaa_floodlevels` | NOAA high-tide-flood thresholds, station 8638610 | 2026-11-14 | 0.00 MB | US Government work, public domain | ok |
-| `noaa_htf_annual` | NOAA observed annual high-tide-flood days, station 8638610 | 2026-11-14 | 0.03 MB | US Government work, public domain | ok |
-| `osm_places` | OpenStreetMap neighbourhood names (labels only) | 2026-11-14 | 0.17 MB | ODbL 1.0, (c) OpenStreetMap contributors | ok |
-| `usgs_3dep_dem` | USGS 3DEP bare-earth elevation, resampled to 10 m (16 tiles) | 2026-11-14 | 106.73 MB | US Government work, public domain | ok |
+| `charleston/census_blocks` | Charleston: 2020 Census blocks and population (populated blocks only) | 2026-11-14 | 8.04 MB | US Government work, public domain | ok |
+| `charleston/census_tracts_015` | Charleston: 2020 Census tracts and population, Berkeley County | 2026-11-14 | 1.46 MB | US Government work, public domain | ok |
+| `charleston/census_tracts_019` | Charleston: 2020 Census tracts and population, Charleston County | 2026-11-14 | 1.98 MB | US Government work, public domain | ok |
+| `charleston/census_tracts_035` | Charleston: 2020 Census tracts and population, Dorchester County | 2026-11-14 | 0.72 MB | US Government work, public domain | ok |
+| `charleston/nasa_ar6_sea_level` | Charleston: NASA Sea Level Projection Tool (IPCC AR6), PSMSL 234 | 2026-11-14 | 0.09 MB | CC BY 4.0 (IPCC AR6 sea level projections, Garner et al. 2021) | ok |
+| `charleston/ngl_midas_gps` | Charleston: Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14) | 2026-11-14 | 5.02 MB | Open; cite Blewitt et al. 2016, doi:10.1002/2015JB012552 | ok |
+| `charleston/nisar_gunw` | Charleston: NISAR L2 Geocoded Unwrapped Interferograms (provisional), track/frame 098_D_072, 9 pairs 20260621 to 20261019, study-area subset | 2026-11-14 | n/a | NASA open data (CC0); NASA-ISRO NISAR mission | ok |
+| `charleston/noaa_datums` | Charleston: NOAA tidal datums, station 8665530 | 2026-11-14 | 0.00 MB | US Government work, public domain | ok |
+| `charleston/noaa_floodlevels` | Charleston: NOAA high-tide-flood thresholds, station 8665530 | 2026-11-14 | 0.00 MB | US Government work, public domain | ok |
+| `charleston/noaa_htf_annual` | Charleston: NOAA observed annual high-tide-flood days, station 8665530 | 2026-11-14 | 0.03 MB | US Government work, public domain | ok |
+| `charleston/opera_disp_s1` | Charleston: NASA OPERA L3 DISP-S1 v1 surface displacement, frame F40029 (254 dates, 20161016 to 20251110), study-area subset | 2026-11-14 | n/a | NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA | ok |
+| `charleston/opera_disp_s1_static` | Charleston: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F40029 | 2026-11-14 | 19.88 MB | NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA | ok |
+| `charleston/osm_places` | Charleston: OpenStreetMap neighbourhood names (labels only) | 2026-11-14 | 0.07 MB | ODbL 1.0, (c) OpenStreetMap contributors | ok |
+| `charleston/usgs_3dep_dem` | Charleston: USGS 3DEP bare-earth elevation, resampled to 10 m (9 tiles) | 2026-11-14 | 50.23 MB | US Government work, public domain | ok |
+| `hampton-roads/census_blocks` | Hampton Roads: 2020 Census blocks and population (populated blocks only) | 2026-11-14 | 11.13 MB | US Government work, public domain | ok |
+| `hampton-roads/census_tracts_550` | Hampton Roads: 2020 Census tracts and population, Chesapeake | 2026-11-14 | 0.64 MB | US Government work, public domain | ok |
+| `hampton-roads/census_tracts_650` | Hampton Roads: 2020 Census tracts and population, Hampton | 2026-11-14 | 0.35 MB | US Government work, public domain | ok |
+| `hampton-roads/census_tracts_700` | Hampton Roads: 2020 Census tracts and population, Newport News | 2026-11-14 | 0.32 MB | US Government work, public domain | ok |
+| `hampton-roads/census_tracts_710` | Hampton Roads: 2020 Census tracts and population, Norfolk | 2026-11-14 | 0.42 MB | US Government work, public domain | ok |
+| `hampton-roads/census_tracts_735` | Hampton Roads: 2020 Census tracts and population, Poquoson | 2026-11-14 | 0.06 MB | US Government work, public domain | ok |
+| `hampton-roads/census_tracts_740` | Hampton Roads: 2020 Census tracts and population, Portsmouth | 2026-11-14 | 0.18 MB | US Government work, public domain | ok |
+| `hampton-roads/census_tracts_810` | Hampton Roads: 2020 Census tracts and population, Virginia Beach | 2026-11-14 | 0.78 MB | US Government work, public domain | ok |
+| `hampton-roads/nasa_ar6_sea_level` | Hampton Roads: NASA Sea Level Projection Tool (IPCC AR6), PSMSL 299 | 2026-11-14 | 0.09 MB | CC BY 4.0 (IPCC AR6 sea level projections, Garner et al. 2021) | ok |
+| `hampton-roads/ngl_midas_gps` | Hampton Roads: Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14) | 2026-11-14 | 5.02 MB | Open; cite Blewitt et al. 2016, doi:10.1002/2015JB012552 | ok |
+| `hampton-roads/nisar_gunw` | Hampton Roads: NISAR L2 Geocoded Unwrapped Interferograms (provisional), track/frame 069_D_070, 9 pairs 20260618 to 20261016, study-area subset | 2026-11-14 | n/a | NASA open data (CC0); NASA-ISRO NISAR mission | ok |
+| `hampton-roads/noaa_datums` | Hampton Roads: NOAA tidal datums, station 8638610 | 2026-11-14 | 0.00 MB | US Government work, public domain | ok |
+| `hampton-roads/noaa_floodlevels` | Hampton Roads: NOAA high-tide-flood thresholds, station 8638610 | 2026-11-14 | 0.00 MB | US Government work, public domain | ok |
+| `hampton-roads/noaa_htf_annual` | Hampton Roads: NOAA observed annual high-tide-flood days, station 8638610 | 2026-11-14 | 0.03 MB | US Government work, public domain | ok |
+| `hampton-roads/opera_disp_s1` | Hampton Roads: NASA OPERA L3 DISP-S1 v1 surface displacement, frame F00833 (269 dates, 20160924 to 20260204), study-area subset | 2026-11-14 | n/a | NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA | ok |
+| `hampton-roads/opera_disp_s1_static` | Hampton Roads: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F00833 | 2026-11-14 | 18.90 MB | NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA | ok |
+| `hampton-roads/osm_places` | Hampton Roads: OpenStreetMap neighbourhood names (labels only) | 2026-11-14 | 0.17 MB | ODbL 1.0, (c) OpenStreetMap contributors | ok |
+| `hampton-roads/usgs_3dep_dem` | Hampton Roads: USGS 3DEP bare-earth elevation, resampled to 10 m (16 tiles) | 2026-11-14 | 106.73 MB | US Government work, public domain | ok |
+| `seattle/census_blocks` | Seattle: 2020 Census blocks and population (populated blocks only) | 2026-11-14 | 3.25 MB | US Government work, public domain | ok |
+| `seattle/census_tracts_033` | Seattle: 2020 Census tracts and population, Seattle area | 2026-11-14 | 4.38 MB | US Government work, public domain | ok |
+| `seattle/nasa_ar6_sea_level` | Seattle: NASA Sea Level Projection Tool (IPCC AR6), PSMSL 127 | 2026-11-14 | 0.09 MB | CC BY 4.0 (IPCC AR6 sea level projections, Garner et al. 2021) | ok |
+| `seattle/ngl_midas_gps` | Seattle: Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14) | 2026-11-14 | 5.02 MB | Open; cite Blewitt et al. 2016, doi:10.1002/2015JB012552 | ok |
+| `seattle/nisar_gunw` | Seattle: NISAR L2 Geocoded Unwrapped Interferograms (provisional), track/frame 106_A_026, 9 pairs 20260621 to 20261019, study-area subset | 2026-11-14 | n/a | NASA open data (CC0); NASA-ISRO NISAR mission | ok |
+| `seattle/noaa_datums` | Seattle: NOAA tidal datums, station 9447130 | 2026-11-14 | 0.00 MB | US Government work, public domain | ok |
+| `seattle/noaa_floodlevels` | Seattle: NOAA high-tide-flood thresholds, station 9447130 | 2026-11-14 | 0.00 MB | US Government work, public domain | ok |
+| `seattle/noaa_htf_annual` | Seattle: NOAA observed annual high-tide-flood days, station 9447130 | 2026-11-14 | 0.03 MB | US Government work, public domain | ok |
+| `seattle/opera_disp_s1` | Seattle: NASA OPERA L3 DISP-S1 v1 surface displacement, frame F03321 (164 dates, 20160808 to 20250926), study-area subset | 2026-11-14 | n/a | NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA | ok |
+| `seattle/opera_disp_s1_static` | Seattle: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F03321 | 2026-11-14 | 19.25 MB | NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA | ok |
+| `seattle/osm_places` | Seattle: OpenStreetMap neighbourhood names (labels only) | 2026-11-14 | 0.03 MB | ODbL 1.0, (c) OpenStreetMap contributors | ok |
+| `seattle/usgs_3dep_dem` | Seattle: USGS 3DEP bare-earth elevation, resampled to 10 m (2 tiles) | 2026-11-14 | 11.76 MB | US Government work, public domain | ok |
 
 ## URLs and notes
 
-- **`census_blocks`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query>  
+- **`charleston/census_blocks`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query>  
   Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.
-- **`census_tracts_550`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='550'&f=geojson>
-- **`census_tracts_650`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='650'&f=geojson>
-- **`census_tracts_700`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='700'&f=geojson>
-- **`census_tracts_710`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='710'&f=geojson>
-- **`census_tracts_735`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='735'&f=geojson>
-- **`census_tracts_740`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='740'&f=geojson>
-- **`census_tracts_810`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='810'&f=geojson>
-- **`nasa_ar6_sea_level`**: <https://d3qt3aobtsas2h.cloudfront.net/edge/ws/search/projection?psmsl_id=299>  
+- **`charleston/census_tracts_015`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='45' AND COUNTY='015'&f=geojson>
+- **`charleston/census_tracts_019`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='45' AND COUNTY='019'&f=geojson>
+- **`charleston/census_tracts_035`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='45' AND COUNTY='035'&f=geojson>
+- **`charleston/nasa_ar6_sea_level`**: <https://d3qt3aobtsas2h.cloudfront.net/edge/ws/search/projection?psmsl_id=234>  
   Data service behind sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool. Medium-confidence projections, relative to 1995-2014.
-- **`ngl_midas_gps`**: <https://geodesy.unr.edu/velocities/midas.IGS14.txt>
-- **`noaa_datums`**: <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8638610/datums.json>
-- **`noaa_floodlevels`**: <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8638610/floodlevels.json>
-- **`noaa_htf_annual`**: <https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station=8638610>
-- **`osm_places`**: <https://overpass-api.de/api/interpreter>  
+- **`charleston/ngl_midas_gps`**: <https://geodesy.unr.edu/velocities/midas.IGS14.txt>
+- **`charleston/nisar_gunw`**: <https://search.asf.alaska.edu/#/?dataset=NISAR&productTypes=GUNW>  
+  Short name NISAR_L2_GUNW_PROVISIONAL_V1 at the Alaska Satellite Facility DAAC (Earthdata login), doi:10.5067/NIL2GUNW-P1. Only the study-area window of five layers was read from each ~2.2 GB file (18 MB kept in data/work/charleston/nisar/). Granules: NISAR_L2_PR_GUNW_023_098_D_072_024_4000_SH_20260621T001121_20260621T001156_20260703T001120_20260703T001155_P05023_N_F_J_001; NISAR_L2_PR_GUNW_024_098_D_072_025_4000_SH_20260703T001120_20260703T001155_20260715T001120_20260715T001154_P05023_F_F_J_001; NISAR_L2_PR_GUNW_025_098_D_072_026_4000_SH_20260715T001120_20260715T001154_20260727T001119_20260727T001154_P05023_N_F_J_001; NISAR_L2_PR_GUNW_026_098_D_072_028_4000_SH_20260727T001119_20260727T001154_20260820T001118_20260820T001152_P05023_N_F_J_001; NISAR_L2_PR_GUNW_028_098_D_072_029_4000_SH_20260820T001118_20260820T001152_20260901T001117_20260901T001152_P05023_N_F_J_001; NISAR_L2_PR_GUNW_029_098_D_072_030_4000_SH_20260901T001117_20260901T001152_20260913T001117_20260913T001152_P05023_N_F_J_001; NISAR_L2_PR_GUNW_030_098_D_072_031_4000_SH_20260913T001117_20260913T001152_20260925T001117_20260925T001152_P05023_N_F_J_001; NISAR_L2_PR_GUNW_031_098_D_072_032_4000_SH_20260925T001117_20260925T001152_20261007T001117_20261007T001152_P05023_N_F_J_001; NISAR_L2_PR_GUNW_032_098_D_072_033_4000_SH_20261007T001117_20261007T001152_20261019T001117_20261019T001152_P05023_N_F_J_001
+- **`charleston/noaa_datums`**: <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8665530/datums.json>
+- **`charleston/noaa_floodlevels`**: <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8665530/floodlevels.json>
+- **`charleston/noaa_htf_annual`**: <https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station=8665530>
+- **`charleston/opera_disp_s1`**: <https://search.asf.alaska.edu/#/?dataset=OPERA-S1&productTypes=DISP-S1>  
+  Short name OPERA_L3_DISP-S1_V1 at the Alaska Satellite Facility DAAC (Earthdata login). Only the chunks over the study area were read from each ~440 MB file; subset stored on a 90 m grid in data/work/charleston/opera/ (78 MB).
+- **`charleston/opera_disp_s1_static`**: <https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L3_DISP-S1-STATIC_V1/OPERA_L3_DISP-S1-STATIC_F40029_20140403_S1A_v1.0/OPERA_L3_DISP-S1-STATIC_F40029_20140403_S1A_v1.0_line_of_sight_enu.tif>  
+  Used to convert line-of-sight motion to vertical. doi:10.5067/SNWG/OPL3DISPS1-V1
+- **`charleston/osm_places`**: <https://overpass-api.de/api/interpreter>  
   Used only to label census tracts with a familiar nearby place name.
-- **`usgs_3dep_dem`**: <https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage>  
+- **`charleston/usgs_3dep_dem`**: <https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage>  
+  Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.
+- **`hampton-roads/census_blocks`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query>  
+  Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.
+- **`hampton-roads/census_tracts_550`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='550'&f=geojson>
+- **`hampton-roads/census_tracts_650`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='650'&f=geojson>
+- **`hampton-roads/census_tracts_700`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='700'&f=geojson>
+- **`hampton-roads/census_tracts_710`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='710'&f=geojson>
+- **`hampton-roads/census_tracts_735`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='735'&f=geojson>
+- **`hampton-roads/census_tracts_740`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='740'&f=geojson>
+- **`hampton-roads/census_tracts_810`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='810'&f=geojson>
+- **`hampton-roads/nasa_ar6_sea_level`**: <https://d3qt3aobtsas2h.cloudfront.net/edge/ws/search/projection?psmsl_id=299>  
+  Data service behind sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool. Medium-confidence projections, relative to 1995-2014.
+- **`hampton-roads/ngl_midas_gps`**: <https://geodesy.unr.edu/velocities/midas.IGS14.txt>
+- **`hampton-roads/nisar_gunw`**: <https://search.asf.alaska.edu/#/?dataset=NISAR&productTypes=GUNW>  
+  Short name NISAR_L2_GUNW_PROVISIONAL_V1 at the Alaska Satellite Facility DAAC (Earthdata login), doi:10.5067/NIL2GUNW-P1. Only the study-area window of five layers was read from each ~2.2 GB file (61 MB kept in data/work/hampton-roads/nisar/). Granules: NISAR_L2_PR_GUNW_023_069_D_070_024_4000_SH_20260618T235335_20260618T235409_20260630T235334_20260630T235409_P05023_N_F_J_001; NISAR_L2_PR_GUNW_024_069_D_070_025_4000_SH_20260630T235334_20260630T235409_20260712T235333_20260712T235408_P05023_N_F_J_001; NISAR_L2_PR_GUNW_025_069_D_070_026_4000_SH_20260712T235333_20260712T235408_20260724T235332_20260724T235407_P05023_N_F_J_001; NISAR_L2_PR_GUNW_026_069_D_070_028_4000_SH_20260724T235332_20260724T235407_20260817T235331_20260817T235406_P05023_N_F_J_001; NISAR_L2_PR_GUNW_028_069_D_070_029_4000_SH_20260817T235331_20260817T235406_20260829T235331_20260829T235406_P05023_N_F_J_001; NISAR_L2_PR_GUNW_029_069_D_070_030_4000_SH_20260829T235331_20260829T235406_20260910T235331_20260910T235406_P05023_N_F_J_001; NISAR_L2_PR_GUNW_030_069_D_070_031_4000_SH_20260910T235331_20260910T235406_20260922T235331_20260922T235406_P05023_N_F_J_001; NISAR_L2_PR_GUNW_031_069_D_070_032_4000_SH_20260922T235331_20260922T235406_20261004T235331_20261004T235406_P05023_N_F_J_001; NISAR_L2_PR_GUNW_032_069_D_070_033_4000_SH_20261004T235331_20261004T235406_20261016T235331_20261016T235406_P05023_N_F_J_001
+- **`hampton-roads/noaa_datums`**: <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8638610/datums.json>
+- **`hampton-roads/noaa_floodlevels`**: <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8638610/floodlevels.json>
+- **`hampton-roads/noaa_htf_annual`**: <https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station=8638610>
+- **`hampton-roads/opera_disp_s1`**: <https://search.asf.alaska.edu/#/?dataset=OPERA-S1&productTypes=DISP-S1>  
+  Short name OPERA_L3_DISP-S1_V1 at the Alaska Satellite Facility DAAC (Earthdata login). Only the chunks over the study area were read from each ~440 MB file; subset stored on a 90 m grid in data/work/opera/ (233 MB).
+- **`hampton-roads/opera_disp_s1_static`**: <https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L3_DISP-S1-STATIC_V1/OPERA_L3_DISP-S1-STATIC_F00833_20140403_S1A_v1.0/OPERA_L3_DISP-S1-STATIC_F00833_20140403_S1A_v1.0_line_of_sight_enu.tif>  
+  Used to convert line-of-sight motion to vertical. doi:10.5067/SNWG/OPL3DISPS1-V1
+- **`hampton-roads/osm_places`**: <https://overpass-api.de/api/interpreter>  
+  Used only to label census tracts with a familiar nearby place name.
+- **`hampton-roads/usgs_3dep_dem`**: <https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage>  
+  Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.
+- **`seattle/census_blocks`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query>  
+  Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.
+- **`seattle/census_tracts_033`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='53' AND COUNTY='033'&f=geojson>
+- **`seattle/nasa_ar6_sea_level`**: <https://d3qt3aobtsas2h.cloudfront.net/edge/ws/search/projection?psmsl_id=127>  
+  Data service behind sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool. Medium-confidence projections, relative to 1995-2014.
+- **`seattle/ngl_midas_gps`**: <https://geodesy.unr.edu/velocities/midas.IGS14.txt>
+- **`seattle/nisar_gunw`**: <https://search.asf.alaska.edu/#/?dataset=NISAR&productTypes=GUNW>  
+  Short name NISAR_L2_GUNW_PROVISIONAL_V1 at the Alaska Satellite Facility DAAC (Earthdata login), doi:10.5067/NIL2GUNW-P1. Only the study-area window of five layers was read from each ~2.2 GB file (6 MB kept in data/work/seattle/nisar/). Granules: NISAR_L2_PR_GUNW_023_106_A_026_024_4000_SH_20260621T130404_20260621T130439_20260703T130403_20260703T130438_P05023_N_F_J_001; NISAR_L2_PR_GUNW_024_106_A_026_025_4000_SH_20260703T130403_20260703T130438_20260715T130403_20260715T130438_P05023_N_F_J_001; NISAR_L2_PR_GUNW_025_106_A_026_026_4000_SH_20260715T130403_20260715T130438_20260727T130402_20260727T130437_P05023_N_F_J_001; NISAR_L2_PR_GUNW_026_106_A_026_028_4000_SH_20260727T130402_20260727T130437_20260820T130401_20260820T130436_P05023_N_F_J_001; NISAR_L2_PR_GUNW_028_106_A_026_029_4000_SH_20260820T130401_20260820T130436_20260901T130400_20260901T130436_P05023_N_F_J_001; NISAR_L2_PR_GUNW_029_106_A_026_030_4000_SH_20260901T130400_20260901T130436_20260913T130400_20260913T130435_P05023_N_F_J_001; NISAR_L2_PR_GUNW_030_106_A_026_031_4000_SH_20260913T130400_20260913T130435_20260925T130400_20260925T130436_P05023_N_F_J_001; NISAR_L2_PR_GUNW_031_106_A_026_032_4000_SH_20260925T130400_20260925T130436_20261007T130400_20261007T130436_P05023_N_F_J_001; NISAR_L2_PR_GUNW_032_106_A_026_033_4000_SH_20261007T130400_20261007T130436_20261019T130401_20261019T130436_P05023_N_F_J_001
+- **`seattle/noaa_datums`**: <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9447130/datums.json>
+- **`seattle/noaa_floodlevels`**: <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9447130/floodlevels.json>
+- **`seattle/noaa_htf_annual`**: <https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station=9447130>
+- **`seattle/opera_disp_s1`**: <https://search.asf.alaska.edu/#/?dataset=OPERA-S1&productTypes=DISP-S1>  
+  Short name OPERA_L3_DISP-S1_V1 at the Alaska Satellite Facility DAAC (Earthdata login). Only the chunks over the study area were read from each ~440 MB file; subset stored on a 90 m grid in data/work/seattle/opera/ (19 MB).
+- **`seattle/opera_disp_s1_static`**: <https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L3_DISP-S1-STATIC_V1/OPERA_L3_DISP-S1-STATIC_F03321_20140403_S1A_v1.0/OPERA_L3_DISP-S1-STATIC_F03321_20140403_S1A_v1.0_line_of_sight_enu.tif>  
+  Used to convert line-of-sight motion to vertical. doi:10.5067/SNWG/OPL3DISPS1-V1
+- **`seattle/osm_places`**: <https://overpass-api.de/api/interpreter>  
+  Used only to label census tracts with a familiar nearby place name.
+- **`seattle/usgs_3dep_dem`**: <https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage>  
   Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.

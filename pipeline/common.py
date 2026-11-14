@@ -5,7 +5,7 @@ import time
 
 import requests
 
-from config import RAW, ROOT
+from config import CITY, RAW, ROOT
 
 SOURCES_JSON = ROOT / "data" / "sources.json"
 UA = {"User-Agent": "sinking-cities-spaceapps/1.0"}
@@ -21,8 +21,8 @@ def record_source(key, *, title, url, licence, path=None, note="", status="ok"):
     """Record where a file came from. DATA_SOURCES.md is generated from this."""
     src = _load_sources()
     size = path.stat().st_size if path is not None and path.exists() else None
-    src[key] = {
-        "title": title,
+    src[f"{CITY['id']}/{key}"] = {
+        "title": f"{CITY['short_name']}: {title}",
         "url": url,
         "licence": licence,
         "file": str(path.relative_to(ROOT)) if path is not None else None,

@@ -4,10 +4,15 @@
   const fmt = (n) => Math.round(n).toLocaleString("en-US");
   const NEVER = 255;
 
+  // Which city: ?city=<id> in the address, otherwise the first one built.
+  const cities = await fetch("data/cities.json").then((r) => r.json());
+  const asked = new URLSearchParams(location.search).get("city");
+  const cid = cities.some((c) => c.id === asked) ? asked : cities[0].id;
+  const D = `data/${cid}/`;
   const [city, tracts, series] = await Promise.all([
-    fetch("data/city.json").then((r) => r.json()),
-    fetch("data/tracts.geojson").then((r) => r.json()),
-    fetch("data/series.json").then((r) => (r.ok ? r.json() : null)).catch(() => null),
+    fetch(D + "city.json").then((r) => r.json()),
+    fetch(D + "tracts.geojson").then((r) => r.json()),
+    fetch(D + "series.json").then((r) => (r.ok ? r.json() : null)).catch(() => null),
   ]);
   const hasSinking = city.status.sinking;
   const byId = new Map(tracts.features.map((f) => [f.properties.id, f.properties]));
@@ -15,7 +20,14 @@
   const floodDays = Math.round(city.water.htf_recent_mean_days);
 
   const state = { view: "flood", yearIdx: 0, monthIdx: series ? series.dates.length - 1 : 0, withSinking: hasSinking, selected: null, playing: null };
-  $("place").textContent = city.name;
+  document.title = `Sinking Cities: ${city.name}`;
+  if (cities.length > 1) {
+    $("place").innerHTML = `<label class="sr-only" for="city-pick">City</label><select id="city-pick">${cities.map((c) => `<option value="${c.id}"${c.id === cid ? " selected" : ""}>${c.name}</option>`).join("")}</select>`;
+    $("city-pick").onchange = (e) => (location.search = "?city=" + e.target.value);
+  } else {
+    $("place").textContent = city.name;
+  }
+  document.querySelectorAll('a[href="methods.html"]').forEach((a) => (a.href = "methods.html?city=" + cid));
   $("with-sinking").checked = hasSinking;
   if (!hasSinking) {
     $("sink-switch").hidden = true;
@@ -37,7 +49,7 @@
 
   // Flood picture: each pixel stores the first year it floods (R with sinking, G sea level only).
   const img = new Image();
-  img.src = "data/flood.png";
+  img.src = D + "flood.png";
   await img.decode();
   const cv = document.createElement("canvas");
   cv.width = img.width;
@@ -68,7 +80,7 @@
   const firstLabel = map.getStyle().layers.find((l) => l.type === "symbol")?.id;
   map.addSource("tracts", { type: "geojson", data: tracts, promoteId: "id" });
   if (hasSinking) {
-    map.addSource("sinking-img", { type: "image", url: "data/sinking.png", coordinates: corners });
+    map.addSource("sinking-img", { type: "image", url: D + "sinking.png", coordinates: corners });
     map.addLayer({ id: "sinking-img", type: "raster", source: "sinking-img", paint: { "raster-opacity": 0.8, "raster-resampling": "nearest" }, layout: { visibility: "none" } }, firstLabel);
   }
   map.addSource("flood", { type: "canvas", canvas: cv, coordinates: corners, animate: false });
@@ -420,11 +432,12 @@
       h += `<p>${R.gps_summary}</p><svg viewBox="0 0 ${W} ${W}" width="${W}" role="img" aria-label="Radar versus GPS vertical rates">
         <rect x="${pad}" y="${pad}" width="${W - 2 * pad}" height="${W - 2 * pad}" fill="#f2f6f7"/>
         <line x1="${sx(-lim)}" y1="${sy(-lim)}" x2="${sx(lim)}" y2="${sy(lim)}" stroke="#52657a" stroke-dasharray="4 3"/>
-        ${R.gps_check.map((c) => `<circle cx="${sx(c.gps_mm_yr)}" cy="${sy(c.insar_mm_yr)}" r="4.5" fill="#c8372d"><title>${c.id}: GPS ${c.gps_mm_yr}, radar ${c.insar_mm_yr} mm/yr</title></circle>`).join("")}
+        ${R.gps_check.map((c) => `<circle cx="${sx(c.gps_mm_yr)}" cy="${sy(c.insar_mm_yr)}" r="4.5" fill="${c.used === false ? "#fff" : "#c8372d"}" stroke="#c8372d"><title>${c.id}: GPS ${c.gps_mm_yr}, radar ${c.insar_mm_yr} mm/yr</title></circle>`).join("")}
         <text x="${W / 2}" y="${W - 8}" text-anchor="middle" font-size="11">GPS vertical rate, mm/yr</text>
         <text x="12" y="${W / 2}" text-anchor="middle" font-size="11" transform="rotate(-90 12 ${W / 2})">Radar vertical rate, mm/yr</text></svg>
         <table><tr><th>Station</th><th class="num">GPS, mm/yr</th><th class="num">Radar, mm/yr</th><th class="num">Difference</th></tr>
-        ${R.gps_check.map((c) => `<tr><td>${c.id}</td><td class="num">${c.gps_mm_yr.toFixed(1)} ± ${c.gps_sigma.toFixed(1)}</td><td class="num">${c.insar_mm_yr.toFixed(1)}</td><td class="num">${(c.insar_mm_yr - c.gps_mm_yr).toFixed(1)}</td></tr>`).join("")}</table>`;
+        ${R.gps_check.map((c) => `<tr><td>${c.id}${c.used === false ? " *" : ""}</td><td class="num">${c.gps_mm_yr.toFixed(1)} ± ${c.gps_sigma.toFixed(1)}</td><td class="num">${c.insar_mm_yr.toFixed(1)}</td><td class="num">${(c.insar_mm_yr - c.gps_mm_yr).toFixed(1)}</td></tr>`).join("")}</table>
+        <p class="small">* Not used for the tie: outside the mapped area, or a GPS rate too uncertain to anchor to. Shown as hollow dots. Negative means sinking.</p>`;
     } else {
       h += `<div class="pending">Radar rates are not loaded yet. ${g.length} GPS stations from the Nevada Geodetic Laboratory are ready for the comparison; their vertical rates range from ${Math.min(...g.map((x) => x.up_mm_yr)).toFixed(1)} to ${Math.max(...g.map((x) => x.up_mm_yr)).toFixed(1)} mm/yr.</div>`;
     }
@@ -435,7 +448,7 @@
     h += `<h3>It has already started</h3><p>Days each year the tide passed NOAA's flood threshold at ${city.water.station_name}. Average for ${city.water.htf_recent_years[0]} to ${city.water.htf_recent_years[1]}: ${city.water.htf_recent_mean_days} days.</p>
       <svg viewBox="0 0 ${d.length * bw} ${H + 16}" width="100%" role="img" aria-label="High-tide flood days per year">
       ${d.map((x, i) => `<rect x="${i * bw}" y="${H - (x.days / mx) * H}" width="${bw - 2}" height="${(x.days / mx) * H}" fill="#1e6fb8"><title>${x.year}: ${x.days} days</title></rect>${x.year % 10 === 0 ? `<text x="${i * bw}" y="${H + 13}" font-size="10" fill="#52657a">${x.year}</text>` : ""}`).join("")}</svg>
-      <p><a href="methods.html">Read the full method and its limits</a></p>`;
+      <p><a href="methods.html?city=${cid}">Read the full method and its limits</a></p>`;
     return h;
   }
   $("open-check").onclick = () => { $("check-body").innerHTML = checkHtml(); $("check").showModal(); };

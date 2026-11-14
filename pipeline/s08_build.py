@@ -16,7 +16,7 @@ from PIL import Image
 from rasterio.warp import Resampling, calculate_default_transform, reproject, transform_bounds
 
 from common import write_sources_md
-from config import BASE_YEAR, CITY, SITE_DATA, SLIDER_END_YEAR, TRACT_FLOOD_SHARE, WEB_GRID_M, WORK
+from config import BASE_YEAR, CITIES, CITY, SITE_DATA, SLIDER_END_YEAR, TRACT_FLOOD_SHARE, WEB_GRID_M, WORK
 
 NEVER = 255
 MM_YR_TO_IN_DECADE = 10 / 25.4
@@ -27,7 +27,7 @@ RAMP = [(-1.0, (38, 132, 124)), (1.0, (120, 182, 150)), (2.0, (236, 214, 120)), 
 def to_web(path, resampling, dst_nodata):
     """Reproject an analysis-grid raster to Web Mercator for the map overlay."""
     with rasterio.open(path) as src:
-        res = WEB_GRID_M / np.cos(np.deg2rad(36.9))
+        res = WEB_GRID_M / np.cos(np.deg2rad((CITY["bbox"][1] + CITY["bbox"][3]) / 2))
         tf, w, h = calculate_default_transform(src.crs, "EPSG:3857", src.width, src.height, *src.bounds, resolution=res)
         out = np.full((h, w), dst_nodata, dtype=src.dtypes[0])
         reproject(rasterio.band(src, 1), out, dst_transform=tf, dst_crs="EPSG:3857", resampling=resampling,
@@ -72,7 +72,7 @@ def main():
     Image.fromarray(rgba, "RGBA").save(SITE_DATA / "flood.png", optimize=True)
 
     if have_sink:
-        rate_web, _ = to_web(WORK / "sink_rate.tif", Resampling.bilinear, np.nan)
+        rate_web, _ = to_web(WORK / "sink_rate_measured.tif", Resampling.bilinear, np.nan)  # measured ground only, gaps stay blank
         Image.fromarray(colourise(rate_web), "RGBA").save(SITE_DATA / "sinking.png", optimize=True)
 
     # --- neighborhoods ------------------------------------------------------
@@ -132,6 +132,7 @@ def main():
         "flood_bounds": bounds,
         "bounds": [round(float(v), 4) for v in tracts.total_bounds],
         "already_tracts": sum(1 for f in feats if f["properties"]["fy_mid"] is not None and f["properties"]["fy_mid"] <= BASE_YEAR),
+        "why": CITY["why"],
         "status": {"sinking": have_sink, "nisar": bool(nisar and nisar.get("ok"))},
         "water": {k: water[k] for k in ("station", "station_name", "mhhw_navd88_m", "htf_minor_navd88_m", "htf_recent_mean_days",
                                          "htf_recent_years", "htf_days", "ar6_gauge_vlm_mm_yr", "scenarios")},
@@ -145,6 +146,9 @@ def main():
         "nisar": nisar,
     }
     (SITE_DATA / "city.json").write_text(json.dumps(rnd(city), separators=(",", ":")))
+    # Index of every city that has been built, for the site's city picker.
+    built = [{"id": cid, "name": c["name"], "short_name": c["short_name"]} for cid, c in CITIES.items() if (SITE_DATA.parent / cid / "city.json").exists()]
+    (SITE_DATA.parent / "cities.json").write_text(json.dumps(built))
     write_sources_md()
     for f in sorted(SITE_DATA.iterdir()):
         print(f"{f.name:16s} {f.stat().st_size / 1e6:6.2f} MB")

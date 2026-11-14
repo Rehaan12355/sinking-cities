@@ -1,37 +1,83 @@
-"""Study-area configuration. Change this file to point the pipeline at another city."""
+"""Study-area configuration. Add a city to CITIES and run the pipeline with
+SC_CITY=<id> to build it; the website lists every city that has been built."""
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-RAW = ROOT / "data" / "raw"          # downloads, not committed
-WORK = ROOT / "data" / "work"        # intermediate products, not committed
-SITE_DATA = ROOT / "site" / "data"   # what the website loads, committed
+
+CITIES = {
+    "hampton-roads": {
+        "name": "Norfolk & Hampton Roads, Virginia",
+        "short_name": "Hampton Roads",
+        "state_fips": "51",
+        # Independent cities of the Hampton Roads core (county-equivalent FIPS).
+        "counties": {
+            "710": "Norfolk",
+            "740": "Portsmouth",
+            "650": "Hampton",
+            "700": "Newport News",
+            "810": "Virginia Beach",
+            "550": "Chesapeake",
+            "735": "Poquoson",
+        },
+        # NOAA tide gauge and its PSMSL id (used by the NASA sea level tool).
+        "tide_station": "8638610",
+        "tide_station_name": "Sewells Point, VA",
+        "psmsl_id": 299,
+        "utm_epsg": 32618,
+        # Analysis window (lon/lat). South Chesapeake / Virginia Beach farmland is
+        # trimmed to keep rasters small; tracts are kept if their centroid is inside.
+        "bbox": (-76.70, 36.66, -75.92, 37.22),
+        # Radar coverage: the OPERA DISP-S1 frame and the NISAR track/frame that
+        # cover the whole window.
+        "opera_frame": "F00833",
+        "nisar_track_frame": "_069_D_070_",
+        "why": "Hampton Roads has one of the highest rates of relative sea level rise on the US Atlantic coast. The region is open to the tide "
+               "rather than walled off by levees, which makes a ground-height comparison a fair first estimate.",
+    },
+    "seattle": {
+        "name": "Seattle, Washington",
+        "short_name": "Seattle",
+        "state_fips": "53",
+        # King County tracts whose centre falls inside the window below.
+        "counties": {"033": "Seattle area"},
+        "tide_station": "9447130",
+        "tide_station_name": "Seattle, WA",
+        "psmsl_id": 127,
+        "utm_epsg": 32610,
+        "bbox": (-122.44, 47.495, -122.235, 47.735),
+        "opera_frame": "F03321",
+        "nisar_track_frame": "_106_A_026_",
+        "why": "Seattle hosts this Space Apps event, and its industrial waterfront, the Duwamish valley and parts of the shoreline are built on "
+               "fill and river sediment only a little above high tide. Lake Washington and Lake Union sit behind the Ballard Locks, above "
+               "the tide, so only the Puget Sound and Duwamish shorelines are treated as open to the sea.",
+    },
+    "charleston": {
+        "name": "Charleston, South Carolina",
+        "short_name": "Charleston",
+        "state_fips": "45",
+        # Tracts of the three counties whose centre falls inside the window below.
+        "counties": {"019": "Charleston County", "015": "Berkeley County", "035": "Dorchester County"},
+        "tide_station": "8665530",
+        "tide_station_name": "Charleston, SC",
+        "psmsl_id": 234,
+        "utm_epsg": 32617,
+        "bbox": (-80.15, 32.65, -79.75, 32.95),
+        "opera_frame": "F40029",
+        "nisar_track_frame": "_098_D_072_",
+        "why": "Charleston is one of the most frequently flooded cities on the US Atlantic coast. Much of the historic peninsula and the "
+               "neighborhoods along its tidal rivers and marshes are built on low, filled ground that the tide can reach directly.",
+    },
+}
+
+CITY_ID = os.environ.get("SC_CITY", "hampton-roads")
+CITY = dict(CITIES[CITY_ID], id=CITY_ID)
+
+RAW = ROOT / "data" / "raw" / CITY_ID          # downloads, not committed
+WORK = ROOT / "data" / "work" / CITY_ID        # intermediate products, not committed
+SITE_DATA = ROOT / "site" / "data" / CITY_ID   # what the website loads, committed
 for _d in (RAW, WORK, SITE_DATA):
     _d.mkdir(parents=True, exist_ok=True)
-
-CITY = {
-    "id": "hampton-roads",
-    "name": "Norfolk & Hampton Roads, Virginia",
-    "short_name": "Hampton Roads",
-    "state_fips": "51",
-    # Independent cities of the Hampton Roads core (county-equivalent FIPS).
-    "counties": {
-        "710": "Norfolk",
-        "740": "Portsmouth",
-        "650": "Hampton",
-        "700": "Newport News",
-        "810": "Virginia Beach",
-        "550": "Chesapeake",
-        "735": "Poquoson",
-    },
-    # NOAA tide gauge and its PSMSL id (used by the NASA sea level tool).
-    "tide_station": "8638610",
-    "tide_station_name": "Sewells Point, VA",
-    "psmsl_id": 299,
-    "utm_epsg": 32618,
-    # Analysis window (lon/lat). South Chesapeake / Virginia Beach farmland is
-    # trimmed to keep rasters small; tracts are kept if their centroid is inside.
-    "bbox": (-76.70, 36.66, -75.92, 37.22),
-}
 
 GRID_M = 10          # flood-model grid, metres
 WEB_GRID_M = 20      # raster resolution shipped to the browser

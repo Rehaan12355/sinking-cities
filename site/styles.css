@@ -176,3 +176,8 @@ a { color: var(--tide-deep); }
   .stage { display: block; }
   .panel { border: 0; overflow: visible; }
 }
+
+/* City picker in the header */
+.place select { font: inherit; color: #fff; background: #1d3a56; border: 1px solid #5b7894; border-radius: 6px; padding: 0.3rem 0.5rem; max-width: 60vw; }
+.place select:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
