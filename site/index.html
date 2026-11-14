@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sinking Cities: Norfolk and Hampton Roads</title>
+<meta name="description" content="NASA radar shows which parts of Norfolk and Hampton Roads are sinking, when they could start flooding regularly, and how many people live there.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="./">Sinking Cities</a>
+  <span class="place" id="place"></span>
+  <nav class="top-actions">
+    <button id="story" class="btn btn-solid" type="button">Play the 30-second story</button>
+    <button id="open-check" class="btn" type="button">Check the science</button>
+    <a class="btn" href="methods.html">How it works</a>
+  </nav>
+</header>
+
+<main class="stage">
+  <aside class="panel" aria-label="Controls and details">
+    <div class="views" role="tablist" aria-label="Map view">
+      <button role="tab" id="tab-sinking" aria-selected="false" data-view="sinking">Sinking ground</button>
+      <button role="tab" id="tab-flood" aria-selected="true" data-view="flood">Flood timing</button>
+    </div>
+
+    <section id="notice" class="notice" hidden></section>
+
+    <section id="overview">
+      <h1 id="headline"></h1>
+      <p id="subhead" class="lede"></p>
+
+      <label class="switch" id="sink-switch">
+        <input type="checkbox" id="with-sinking" checked>
+        <span class="switch-track" aria-hidden="true"></span>
+        <span>Include sinking ground</span>
+      </label>
+      <p id="sink-effect" class="effect"></p>
+
+      <h2 id="rank-title"></h2>
+      <ol id="rank" class="rank"></ol>
+      <p class="hint">Select any neighborhood on the map for its details.</p>
+    </section>
+
+    <section id="card" class="card" hidden aria-live="polite"></section>
+  </aside>
+
+  <div class="mapwrap">
+    <div id="map" aria-label="Map of the study area"></div>
+    <div id="caption" class="caption" hidden></div>
+    <div id="legend" class="legend"></div>
+  </div>
+</main>
+
+<footer class="tide">
+  <div class="tide-year">
+    <output id="year-label" for="slider">2026</output>
+    <button id="play" class="btn btn-round" type="button" aria-label="Play">▶</button>
+  </div>
+  <div class="tide-slider">
+    <input id="slider" type="range" min="0" max="74" value="0" step="1" aria-label="Year">
+    <div id="ticks" class="ticks" aria-hidden="true"></div>
+  </div>
+  <div class="tide-count">
+    <strong id="count">–</strong>
+    <span id="count-label"></span>
+  </div>
+</footer>
+
+<dialog id="check" class="check">
+  <form method="dialog"><button class="btn close" aria-label="Close">Close</button></form>
+  <div id="check-body"></div>
+</dialog>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

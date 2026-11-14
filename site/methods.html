@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Sinking Cities works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+<style>
+  body { display: block; height: auto; }
+  article { max-width: 44rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  article h1 { font-size: 2.4rem; margin-bottom: 0.5rem; }
+  article h2 { font-size: 1.35rem; margin-top: 2.2rem; }
+  article p, article li { font-size: 1.02rem; line-height: 1.6; }
+  article li { margin-top: 0.35rem; }
+  .eq { background: var(--sheet); border-left: 4px solid var(--tide); padding: 0.8rem 1rem; margin-top: 0.8rem; }
+  table { border-collapse: collapse; width: 100%; margin-top: 0.6rem; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 0.4rem 0.7rem 0.4rem 0; border-top: 1px solid var(--rule); vertical-align: top; }
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="./">Sinking Cities</a>
+  <nav class="top-actions"><a class="btn" href="./">Back to the map</a></nav>
+</header>
+<article>
+  <h1>How it works, and where it stops working</h1>
+  <p class="lede">Sinking Cities answers three questions for each neighborhood of Norfolk and Hampton Roads, Virginia: how fast is the ground sinking, when could high tides start flooding it regularly, and how many people live there.</p>
+
+  <h2>Why this place</h2>
+  <p>Hampton Roads has one of the highest rates of relative sea level rise on the US Atlantic coast, and tidal flooding is already routine: the tide passed NOAA's flood threshold at <span data-k="station"></span> on an average of <b><span data-k="days"></span> days a year</b> from <span data-k="y0"></span> to <span data-k="y1"></span>. About <span data-k="pop"></span> people live in the seven cities mapped here. The region is open to the tide rather than walled off by levees, which makes a ground-height comparison a fair first estimate.</p>
+
+  <h2>Step 1: measure sinking from space</h2>
+  <p>Radar satellites send a microwave pulse to the ground and record the echo. Comparing the echoes from two passes over the same spot reveals whether the ground moved toward or away from the satellite, down to millimeters. This technique is called radar interferometry, or InSAR.</p>
+  <ul>
+    <li><b>The long record.</b> NASA's OPERA DISP-S1 product gives ground motion every 6 to 12 days since July 2016 at 30 m resolution. NASA's Jet Propulsion Laboratory builds it from the European Space Agency's Sentinel-1 radar (C-band, VV polarization). We fit a straight line through each pixel's history to get a yearly rate and its uncertainty.</li>
+    <li><b>The newest look.</b> NISAR, the NASA-ISRO radar launched in 2025, has imaged this area since June 2026. Its record is too short for a yearly rate, so we use it as an independent check on the most recent months.</li>
+    <li><b>Radar sees motion along its line of sight.</b> We convert that to vertical motion by assuming the ground moves straight up or down, which is reasonable for subsidence but not exact.</li>
+    <li><b>Tied to GPS.</b> Radar measures motion relative to a reference area. We anchor the radar rates to permanent GPS stations processed by the Nevada Geodetic Laboratory, and report how closely the two agree in "Check the science".</li>
+  </ul>
+
+  <h2>Step 2: find the year the water arrives</h2>
+  <p>For every 10 m square of ground we compare two heights, year by year:</p>
+  <div class="eq">
+    ground height = lidar elevation − sinking rate × years from 2026<br>
+    water height = NOAA flood threshold + ocean rise since 2026
+  </div>
+  <p>The first year the ground is below the water, and the water can reach it overland from the bay or ocean, is that square's flood year.</p>
+  <ul>
+    <li><b>"Regular flooding"</b> means flooding at least as often as the NOAA minor flood threshold elevation floods today (<span data-k="thr"></span> m above NAVD88, about <span data-k="days"></span> days a year).</li>
+    <li><b>Ocean rise</b> comes from the NASA Sea Level Projection Tool (IPCC AR6) at the same tide gauge. Those projections include one land-motion value for the whole gauge (<span data-k="vlm"></span> mm a year). We remove it and put our per-neighborhood radar rate in its place, so sinking is counted once, where it actually happens.</li>
+    <li><b>Ranges, not single years.</b> The early end uses a high sea level scenario and a faster sinking rate; the late end uses a low scenario and a slower rate.</li>
+    <li><b>A neighborhood's flood year</b> is when <span data-k="share"></span>% of its currently dry land floods regularly.</li>
+  </ul>
+
+  <h2>Step 3: count the people</h2>
+  <p>Population comes from 2020 Census blocks, the smallest census unit. Each block's residents are spread evenly over that block's dry land, then counted wherever the ground has reached its flood year. This places people far more precisely than a neighborhood average, but it is still an estimate of residents, not of buildings or of who is home.</p>
+
+  <h2>What makes this ground sink</h2>
+  <ul>
+    <li><b>Groundwater pumping.</b> Drawing water from the deep Potomac aquifer system lets its clay layers compact. The US Geological Survey identifies this as the largest cause of subsidence in the region.</li>
+    <li><b>The ice age.</b> Land here was pushed up by the weight of the ice sheet to the north and has been slowly settling back since it melted, at roughly a millimeter a year.</li>
+    <li><b>Fill and soft sediment.</b> Neighborhoods built on filled creeks and marsh settle faster than their surroundings, which is why sinking varies street to street.</li>
+  </ul>
+
+  <h2>Which radar signals reveal it</h2>
+  <p>Ground sinking shows up in the <b>phase</b> of co-polarized radar echoes: VV for Sentinel-1 and HH for NISAR. Co-polarized signals bounce strongly off buildings, roads and bare ground and stay stable from pass to pass, which is what interferometry needs. Cross-polarized signals (HV) respond more to vegetation and are better for mapping forests, wetlands and flood extent than for measuring millimeters of motion. NISAR's longer L-band wavelength also keeps its signal stable over marsh and tree cover where C-band loses it, which matters on this coast.</p>
+
+  <h2>What NISAR could do next</h2>
+  <ul>
+    <li>Once NASA releases the NISAR displacement time series (OPERA DISP-NI, planned for 2027), repeat this analysis with L-band data to fill in wetlands and wooded neighborhoods.</li>
+    <li>Extend the method to cities outside North America, such as Jakarta or Lagos, where no long NASA ground-motion record exists yet.</li>
+    <li>Use NISAR's cross-polarized images to map actual high-tide flood water and check predicted flood zones against what happened.</li>
+    <li>Watch for change: a neighborhood whose sinking speeds up after new wells or construction can be flagged within months.</li>
+  </ul>
+
+  <h2>Limits you should know</h2>
+  <ul>
+    <li><b>This is a screening tool, not a flood forecast.</b> It compares ground height to tide height. It does not model storm surge, rainfall, waves, drainage pipes, pumps, seawalls or tide gates.</li>
+    <li><b>Sinking is assumed to continue at its measured rate.</b> Rates can change, for example if groundwater pumping is reduced.</li>
+    <li><b>Elevation has its own error.</b> Lidar elevations are typically accurate to around 10 cm, which is several decades of sinking at these rates. Flood years for individual squares are indicative.</li>
+    <li><b>The lidar surveys are a few years old.</b> We treat their heights as 2026 heights; the sinking since each survey is smaller than the lidar error.</li>
+    <li><b>Radar has gaps.</b> Water, marsh and dense trees do not give a stable C-band signal. Neighborhoods with little radar coverage are marked.</li>
+    <li><b>One tide gauge represents the region.</b> Tide heights vary along the rivers and bay.</li>
+  </ul>
+
+  <h2>Data</h2>
+  <table>
+    <tr><th>What</th><th>Source</th></tr>
+    <tr><td>Ground motion, 2016 on</td><td>NASA OPERA DISP-S1 (from ESA Copernicus Sentinel-1), via the Alaska Satellite Facility</td></tr>
+    <tr><td>Newest radar</td><td>NASA-ISRO NISAR geocoded unwrapped interferograms, via the Alaska Satellite Facility</td></tr>
+    <tr><td>Sea level projections</td><td>NASA Sea Level Projection Tool, IPCC AR6</td></tr>
+    <tr><td>Elevation</td><td>USGS 3D Elevation Program</td></tr>
+    <tr><td>Tide datums, flood threshold, flood days</td><td>NOAA Tides and Currents</td></tr>
+    <tr><td>Population</td><td>US Census Bureau, 2020 Census</td></tr>
+    <tr><td>GPS ground truth</td><td>Nevada Geodetic Laboratory (Blewitt et al. 2016)</td></tr>
+    <tr><td>Base map and place names</td><td>OpenStreetMap contributors, OpenFreeMap</td></tr>
+  </table>
+  <p>Every file's address, date, size and licence is listed in <a href="https://github.com/Rehaan12355/sinking-cities/blob/main/DATA_SOURCES.md">DATA_SOURCES.md</a>. The code is at <a href="https://github.com/Rehaan12355/sinking-cities">github.com/Rehaan12355/sinking-cities</a>.</p>
+
+  <h2>Use of AI</h2>
+  <p>We used Claude (Anthropic) to help write code and draft text. No data, numbers, images or video on this site were generated by AI: every value is computed from the public sources above.</p>
+  <p>Built for the NASA Space Apps Challenge 2026, Seattle. Not affiliated with or endorsed by NASA.</p>
+</article>
+<script>
+fetch("data/city.json").then((r) => r.json()).then((c) => {
+  const v = {
+    station: c.water.station_name, days: c.water.htf_recent_mean_days, y0: c.water.htf_recent_years[0], y1: c.water.htf_recent_years[1],
+    pop: (c.population / 1e6).toFixed(2) + " million", thr: c.water.htf_minor_navd88_m.toFixed(2), vlm: c.water.ar6_gauge_vlm_mm_yr,
+    share: Math.round(c.tract_flood_share * 100),
+  };
+  document.querySelectorAll("[data-k]").forEach((el) => (el.textContent = v[el.dataset.k]));
+});
+</script>
+</body>
+</html>
