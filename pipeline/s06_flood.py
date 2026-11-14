@@ -157,8 +157,10 @@ def main():
     result["people_placed"] = round(placed)
     (WORK / "flood.json").write_text(json.dumps(result))
     prof = dict(driver="GTiff", height=h, width=w, count=1, dtype="uint8", crs=crs, transform=transform, nodata=NEVER, compress="deflate", tiled=True)
+    outside = tr_idx == 0
     for (mode, sc), g in grids.items():
         if sc == "mid" or mode == "sinking":
+            g[outside] = NEVER  # the map only shows the neighborhoods we counted
             with rasterio.open(WORK / f"floodyear_{mode}_{sc}.tif", "w", **prof) as dst:
                 dst.write(g, 1)
     with rasterio.open(WORK / "sea.tif", "w", **prof) as dst:

@@ -138,5 +138,15 @@
     "status": "ok",
     "title": "OpenStreetMap neighbourhood names (labels only)",
     "url": "https://overpass-api.de/api/interpreter"
+  },
+  "usgs_3dep_dem": {
+    "bytes": 106732655,
+    "file": "data/work/dem.tif",
+    "licence": "US Government work, public domain",
+    "note": "Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "USGS 3DEP bare-earth elevation, resampled to 10 m (16 tiles)",
+    "url": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage"
   }
 }

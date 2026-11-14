@@ -28,7 +28,7 @@
   const map = new maplibregl.Map({
     container: "map",
     style: "https://tiles.openfreemap.org/styles/positron",
-    bounds: [city.flood_bounds.slice(0, 2), city.flood_bounds.slice(2)],
+    bounds: [city.bounds.slice(0, 2), city.bounds.slice(2)],
     fitBoundsOptions: { padding: 20 },
     attributionControl: { compact: true },
   });
@@ -58,7 +58,7 @@
     const idx = state.yearIdx;
     for (let i = 0, p = ch; i < out32.length; i++, p += 4) {
       const v = srcPx[p];
-      out32[i] = v === NEVER || v > idx ? 0 : idx - v < 5 ? NEW : OLD;
+      out32[i] = v === NEVER || v > idx ? 0 : v > 0 && idx - v < 5 ? NEW : OLD;
     }
     ctx.putImageData(out, 0, 0);
     const src = map.getSource("flood");
@@ -117,7 +117,7 @@
     if (state.view === "flood") {
       L.innerHTML = `<b>Floods about ${floodDays}+ days a year</b>
         <div class="key"><span class="sw" style="background:#2684d6"></span>Newly flooding ground</div>
-        <div class="key"><span class="sw" style="background:#0b3f73"></span>Flooding for 5+ years</div>
+        <div class="key"><span class="sw" style="background:#0b3f73"></span>Flooding today, or for 5+ years</div>
         <div class="key"><span class="sw" style="border:2px solid #c8372d"></span>Neighborhood with ${Math.round(city.tract_flood_share * 100)}% of its land flooding</div>`;
     } else {
       const stops = city.ramp.map(([v, c], i) => `${c} ${(i / (city.ramp.length - 1)) * 100}%`).join(",");
@@ -146,7 +146,7 @@
       const lo = city.people[m + "_low"][state.yearIdx];
       const hi = city.people[m + "_high"][state.yearIdx];
       $("count").textContent = fmt(mid);
-      $("count-label").textContent = `people live on land that floods regularly by ${year} (range ${fmt(lo)} to ${fmt(hi)})`;
+      $("count-label").textContent = `people live on land that floods regularly ${state.yearIdx ? "by " + year : "today"}` + (lo !== hi ? ` (range ${fmt(lo)} to ${fmt(hi)})` : "");
       if (hasSinking) {
         const extra = city.people.sinking_mid[state.yearIdx] - city.people.ocean_mid[state.yearIdx];
         $("sink-effect").innerHTML = state.withSinking
@@ -212,13 +212,16 @@
     const rows = tracts.features.map((f) => f.properties);
     let top;
     if (flood) {
-      $("rank-title").textContent = "First in line";
+      $("rank-title").textContent = "Next in line";
       const k = fyKey();
-      top = rows.filter((p) => p[k] != null && p.pop > 0).sort((a, b) => a[k] - b[k] || b.pop - a.pop).slice(0, 8);
+      top = rows.filter((p) => p[k] != null && p[k] > base && p.pop > 0).sort((a, b) => a[k] - b[k] || b.pop - a.pop).slice(0, 8);
     } else {
       $("rank-title").textContent = hasSinking ? "Sinking fastest" : "";
       top = hasSinking ? rows.filter((p) => p.rate != null && p.pop > 0).sort((a, b) => b.rate - a.rate).slice(0, 8) : [];
     }
+    $("already").textContent = flood && city.already_tracts
+      ? `${city.already_tracts} neighborhoods, mostly marsh and waterfront, already have ${Math.round(city.tract_flood_share * 100)}% of their land below the flood line.`
+      : "";
     $("rank").innerHTML = top
       .map((p) => `<li><button type="button" data-id="${p.id}">
           <span class="rank-name">${p.name}</span>
@@ -383,7 +386,7 @@
     const star = tracts.features.map((f) => f.properties).filter((p) => p.fy_mid != null && p.fy_mid > base && p.pop >= 1500)
       .sort((a, b) => a.fy_mid - b.fy_mid || b.pop - a.pop)[0];
     select(null);
-    map.fitBounds([[w, s], [e, n]], { padding: 20, duration: 800 });
+    map.fitBounds([city.bounds.slice(0, 2), city.bounds.slice(2)], { padding: 20, duration: 800 });
     say(`${city.short_name}: ${(city.population / 1e6).toFixed(2)} million people at the water's edge.`);
     if (hasSinking && series) {
       state.monthIdx = 0; setView("sinking");

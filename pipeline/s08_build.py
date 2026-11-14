@@ -130,6 +130,8 @@ def main():
         "population": int(tracts["pop"].sum()), "n_tracts": len(tracts),
         "tract_flood_share": TRACT_FLOOD_SHARE,
         "flood_bounds": bounds,
+        "bounds": [round(float(v), 4) for v in tracts.total_bounds],
+        "already_tracts": sum(1 for f in feats if f["properties"]["fy_mid"] is not None and f["properties"]["fy_mid"] <= BASE_YEAR),
         "status": {"sinking": have_sink, "nisar": bool(nisar and nisar.get("ok"))},
         "water": {k: water[k] for k in ("station", "station_name", "mhhw_navd88_m", "htf_minor_navd88_m", "htf_recent_mean_days",
                                          "htf_recent_years", "htf_days", "ar6_gauge_vlm_mm_yr", "scenarios")},
