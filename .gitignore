@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+# Downloads and intermediate rasters are rebuilt by the pipeline
+data/raw/
+data/work/
+# Credentials never go in the repo
+.netrc
+.env
+# Internal planning doc
+*handoff*.pdf
