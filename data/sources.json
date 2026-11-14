@@ -1,0 +1,142 @@
+{
+  "census_blocks": {
+    "bytes": 11132928,
+    "file": "data/work/blocks.gpkg",
+    "licence": "US Government work, public domain",
+    "note": "Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "2020 Census blocks and population (populated blocks only)",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query"
+  },
+  "census_tracts_550": {
+    "bytes": 635338,
+    "file": "data/raw/tracts_550.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "2020 Census tracts and population, Chesapeake",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='550'&f=geojson"
+  },
+  "census_tracts_650": {
+    "bytes": 354700,
+    "file": "data/raw/tracts_650.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "2020 Census tracts and population, Hampton",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='650'&f=geojson"
+  },
+  "census_tracts_700": {
+    "bytes": 319020,
+    "file": "data/raw/tracts_700.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "2020 Census tracts and population, Newport News",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='700'&f=geojson"
+  },
+  "census_tracts_710": {
+    "bytes": 417374,
+    "file": "data/raw/tracts_710.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "2020 Census tracts and population, Norfolk",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='710'&f=geojson"
+  },
+  "census_tracts_735": {
+    "bytes": 61258,
+    "file": "data/raw/tracts_735.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "2020 Census tracts and population, Poquoson",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='735'&f=geojson"
+  },
+  "census_tracts_740": {
+    "bytes": 180063,
+    "file": "data/raw/tracts_740.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "2020 Census tracts and population, Portsmouth",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='740'&f=geojson"
+  },
+  "census_tracts_810": {
+    "bytes": 775874,
+    "file": "data/raw/tracts_810.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "2020 Census tracts and population, Virginia Beach",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='810'&f=geojson"
+  },
+  "nasa_ar6_sea_level": {
+    "bytes": 88711,
+    "file": "data/raw/nasa_ar6_projection.json",
+    "licence": "CC BY 4.0 (IPCC AR6 sea level projections, Garner et al. 2021)",
+    "note": "Data service behind sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool. Medium-confidence projections, relative to 1995-2014.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "NASA Sea Level Projection Tool (IPCC AR6), PSMSL 299",
+    "url": "https://d3qt3aobtsas2h.cloudfront.net/edge/ws/search/projection?psmsl_id=299"
+  },
+  "ngl_midas_gps": {
+    "bytes": 5021832,
+    "file": "data/raw/midas.IGS14.txt",
+    "licence": "Open; cite Blewitt et al. 2016, doi:10.1002/2015JB012552",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14)",
+    "url": "https://geodesy.unr.edu/velocities/midas.IGS14.txt"
+  },
+  "noaa_datums": {
+    "bytes": 2213,
+    "file": "data/raw/noaa_datums.json",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "NOAA tidal datums, station 8638610",
+    "url": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8638610/datums.json"
+  },
+  "noaa_floodlevels": {
+    "bytes": 262,
+    "file": "data/raw/noaa_floodlevels.json",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "NOAA high-tide-flood thresholds, station 8638610",
+    "url": "https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8638610/floodlevels.json"
+  },
+  "noaa_htf_annual": {
+    "bytes": 28808,
+    "file": "data/raw/noaa_htf_annual.json",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "NOAA observed annual high-tide-flood days, station 8638610",
+    "url": "https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station=8638610"
+  },
+  "osm_places": {
+    "bytes": 165745,
+    "file": "data/raw/osm_places.json",
+    "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+    "note": "Used only to label census tracts with a familiar nearby place name.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "OpenStreetMap neighbourhood names (labels only)",
+    "url": "https://overpass-api.de/api/interpreter"
+  }
+}
