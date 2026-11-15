@@ -6,13 +6,15 @@ Sinking Cities uses NASA radar to show which parts of a US coastal city are quie
 sinking, roughly when those areas could start flooding regularly, and how many people
 live there, so leaders can protect people before it happens.
 
-Five study areas, chosen with the picker at the top of the site:
+Seven study areas, chosen with the picker at the top of the site:
 
 - **Norfolk and Hampton Roads, Virginia**: seven cities, 366 census-tract neighborhoods, about 1.36 million residents.
 - **Charleston, South Carolina**: 95 neighborhoods, about 0.41 million residents.
 - **Miami and Miami Beach, Florida**: 322 neighborhoods, about 1.14 million residents.
 - **Galveston Bay, Texas**: 101 neighborhoods, about 0.35 million residents.
 - **Seattle, Washington**: 190 neighborhoods, about 0.79 million residents.
+- **Aberdeen and Hoquiam, Washington**: 7 neighborhoods, about 28,000 residents.
+- **Olympia, Washington**: 19 neighborhoods, about 95,000 residents.
 
 Each city has three map views: sinking ground, flood timing, and which radar (NISAR or the older Sentinel-1) can measure each piece of land.
 
@@ -67,6 +69,18 @@ Each city has three map views: sinking ground, flood timing, and which radar (NI
   the middle scenario with sinking included. The low ground here is mostly port and
   industrial land, which this people-count does not capture.
 
+## What it found in Aberdeen, Hoquiam and Olympia
+
+- Aberdeen and Hoquiam: about 2,900 people, one in ten, live on land that floods
+  regularly today, rising to about 13,700 by 2100 in the middle scenario. The ground
+  is not sinking, so sea level does the work. Radar and GPS agree poorly here (about
+  3.6 mm a year), older levees are not modelled, and the flood threshold is worked
+  out with NOAA's formula because the local gauge has none, so treat these as rough.
+- NISAR measures 99% of the land around Aberdeen where the older radar reaches 29%,
+  the largest gain of any city.
+- Olympia: very little regular flooding (about 19 people today, about 45 by 2100)
+  and almost no sinking. Its threshold is also formula-derived.
+
 Every figure above is produced by the pipeline from the sources in `DATA_SOURCES.md`.
 
 ## How it is put together
@@ -92,7 +106,7 @@ Every figure above is produced by the pipeline from the sources in `DATA_SOURCES
 ```
 python -m venv .venv && .venv/bin/pip install earthaccess geopandas rasterio h5py scipy pillow requests
 cd pipeline
-export SC_CITY=hampton-roads   # or charleston, miami, galveston, seattle; cities are defined in pipeline/config.py
+export SC_CITY=hampton-roads   # or charleston, miami, galveston, seattle, aberdeen, olympia; cities are defined in pipeline/config.py
 for s in s01_boundaries s01b_blocks s02_elevation s03_water s04_gps s05a_opera_fetch s06_flood s05b_sinking s06_flood s07_nisar s08_build; do ../.venv/bin/python $s.py; done
 cd ../site && python -m http.server 8000
 ```

@@ -509,7 +509,7 @@
     const star = soon.find((p) => !/ tract /.test(p.name) && p.years_sooner >= 5 && p.fy_mid <= base + 40) || soon[0];
     select(null);
     map.fitBounds([city.bounds.slice(0, 2), city.bounds.slice(2)], { padding: 20, duration: 800 });
-    say(`${city.short_name}: ${(city.population / 1e6).toFixed(2)} million people at the water's edge.`);
+    say(`${city.short_name}: ${city.population >= 1e6 ? (city.population / 1e6).toFixed(2) + " million" : fmt(Math.round(city.population / 1000) * 1000)} people at the water's edge.`);
     if (hasSinking && series) {
       state.monthIdx = 0; setView("sinking");
       await sleep(2500); if (token.cancelled) return;

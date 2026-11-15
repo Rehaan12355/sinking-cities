@@ -122,7 +122,7 @@ fetch("data/cities.json").then((r) => r.json()).then((cs) => {
     name: c.name, why: c.why, ntracts: c.n_tracts, ndates: R.n_dates, first: month(R.first_date), last: month(R.last_date),
     rejected: (R.dates_rejected || []).length, gpsrms: R.tie_sigma_mm_yr != null ? R.tie_sigma_mm_yr.toFixed(1) : "", npairs: N.n_pairs, nnoise: N.neighborhood_scatter_mm != null ? Math.round(N.neighborhood_scatter_mm) : "",
     station: c.water.htf_station_name || c.water.station_name, wnotes: c.water.notes || "", days: c.water.htf_recent_mean_days, y0: c.water.htf_recent_years[0], y1: c.water.htf_recent_years[1],
-    pop: (c.population / 1e6).toFixed(2) + " million", thr: c.water.htf_minor_navd88_m.toFixed(2), vlm: c.water.ar6_gauge_vlm_mm_yr,
+    pop: c.population >= 1e6 ? (c.population / 1e6).toFixed(2) + " million" : Math.round(c.population / 1000) * 1000 >= 1000 ? (Math.round(c.population / 1000) * 1000).toLocaleString("en-US") : c.population, thr: c.water.htf_minor_navd88_m.toFixed(2), vlm: c.water.ar6_gauge_vlm_mm_yr,
     share: Math.round(c.tract_flood_share * 100),
   };
   document.querySelectorAll("[data-k]").forEach((el) => (el.textContent = v[el.dataset.k]));
