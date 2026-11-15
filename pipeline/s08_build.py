@@ -136,7 +136,7 @@ def main():
         "already_tracts": sum(1 for f in feats if f["properties"]["fy_mid"] is not None and f["properties"]["fy_mid"] <= BASE_YEAR),
         "why": CITY["why"],
         "status": {"sinking": have_sink, "nisar": bool(nisar and nisar.get("ok"))},
-        "water": {k: water[k] for k in ("station", "station_name", "mhhw_navd88_m", "htf_minor_navd88_m", "htf_recent_mean_days",
+        "water": {k: water.get(k) for k in ("station", "station_name", "htf_station_name", "notes", "mhhw_navd88_m", "htf_minor_navd88_m", "htf_recent_mean_days",
                                          "htf_recent_years", "htf_days", "ar6_gauge_vlm_mm_yr", "scenarios")},
         "ocean_rise_m": {k: v[:n_slider] for k, v in water["ocean_rise_m"].items()},
         "people": {k: v["people"][:n_slider] for k, v in flood["city"].items()},

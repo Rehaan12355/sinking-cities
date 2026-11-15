@@ -171,6 +171,15 @@ def main():
                       "raw": float(gv[0] / u * 1000), "years": f"{g['start']:.0f}-{g['end']:.0f}", "pixels": round(float(gpx[k]))})
     diffs = np.array([c["gps_mm_yr"] - c["raw"] for c in check])
     used = np.array([c["used"] for c in check])
+    # A small map can hold too few stations to tie to. Then every well-determined
+    # station in the surrounding area is used, and the site says so.
+    widened = used.sum() < 3
+    if widened:
+        used = np.array([c["gps_sigma"] <= GPS_MAX_SIGMA for c in check])
+        for c, u in zip(check, used):
+            c["used"] = bool(u)
+    if used.sum() == 0:
+        raise SystemExit("no GPS station with a well-determined rate near this city: the radar cannot be tied")
     offset = float(np.median(diffs[used]))
     resid = diffs - offset
     rms = float(np.sqrt(np.mean(resid[used] ** 2)))
@@ -271,12 +280,14 @@ def main():
         "area_median_mm_yr": round(area_median, 2), "area_spread_mm_yr": round(spread, 2),
         "gps_offset_mm_yr": round(offset, 2), "gps_rms_mm_yr": round(rms, 2), "tie_sigma_mm_yr": round(tie_sigma, 2), "gps_rms_all_mm_yr": round(rms_all, 2), "gps_robust_spread_mm_yr": round(mad, 2), "gps_n_used": n_used,
         "gps_check": check,
-        "gps_summary": (f"One constant ties the radar to the {n_used} GPS stations inside the map that have a well-determined rate. After that, radar and GPS "
-                        f"vertical rates differ by {rms:.1f} mm a year (root mean square). "
+        "gps_summary": ((f"Too few GPS stations sit inside this small map, so one constant ties the radar to the {n_used} well-determined stations in the surrounding area. After that, radar and GPS "
+                         if widened else
+                         f"One constant ties the radar to the {n_used} GPS stations inside the map that have a well-determined rate. After that, radar and GPS ")
+                        + f"vertical rates differ by {rms:.1f} mm a year (root mean square). "
                         + (f"That disagreement is included in every rate's uncertainty. " if tie_sigma == rms else
                            f"With so few stations that figure flatters the radar, so every rate's uncertainty uses the GPS stations' own uncertainty instead, {tie_sigma:.1f} mm a year. ")
                         + 
-                        f"Counting all {len(check)} stations, including those outside the map or with a very uncertain GPS rate (marked *), the difference is {rms_all:.1f} mm a year. "
+                        f"Counting all {len(check)} stations, including those {'with' if widened else 'outside the map or with'} a very uncertain GPS rate (marked *), the difference is {rms_all:.1f} mm a year. "
                         f"Some GPS records ended before the radar record began in {sec[0][:4]}, so part of the difference is the two instruments measuring different years."),
         "tracts": out_tracts,
     }

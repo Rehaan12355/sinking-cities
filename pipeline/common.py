@@ -1,6 +1,9 @@
 """Shared helpers: downloads with provenance logging."""
+import contextlib
 import datetime as dt
+import fcntl
 import json
+import os
 import time
 
 import requests
@@ -17,10 +20,26 @@ def _load_sources():
     return {}
 
 
+@contextlib.contextmanager
+def _sources_lock():
+    """Several cities can be built at once; only one process may rewrite the log at a time."""
+    with open(SOURCES_JSON.with_suffix(".lock"), "w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(lock, fcntl.LOCK_UN)
+
+
 def record_source(key, *, title, url, licence, path=None, note="", status="ok"):
     """Record where a file came from. DATA_SOURCES.md is generated from this."""
-    src = _load_sources()
     size = path.stat().st_size if path is not None and path.exists() else None
+    with _sources_lock():
+        _record(key, title, url, licence, path, size, note, status)
+
+
+def _record(key, title, url, licence, path, size, note, status):
+    src = _load_sources()
     src[f"{CITY['id']}/{key}"] = {
         "title": f"{CITY['short_name']}: {title}",
         "url": url,
@@ -31,7 +50,9 @@ def record_source(key, *, title, url, licence, path=None, note="", status="ok"):
         "status": status,
         "note": note,
     }
-    SOURCES_JSON.write_text(json.dumps(src, indent=2, sort_keys=True))
+    tmp = SOURCES_JSON.with_suffix(".tmp")
+    tmp.write_text(json.dumps(src, indent=2, sort_keys=True))
+    os.replace(tmp, SOURCES_JSON)   # swap in whole, so a reader never sees half a file
 
 
 def fetch(url, name, *, params=None, force=False, tries=4, timeout=120):

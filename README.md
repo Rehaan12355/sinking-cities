@@ -6,11 +6,12 @@ Sinking Cities uses NASA radar to show which parts of a US coastal city are quie
 sinking, roughly when those areas could start flooding regularly, and how many people
 live there, so leaders can protect people before it happens.
 
-Four study areas, chosen with the picker at the top of the site:
+Five study areas, chosen with the picker at the top of the site:
 
 - **Norfolk and Hampton Roads, Virginia**: seven cities, 366 census-tract neighborhoods, about 1.36 million residents.
 - **Charleston, South Carolina**: 95 neighborhoods, about 0.41 million residents.
 - **Miami and Miami Beach, Florida**: 322 neighborhoods, about 1.14 million residents.
+- **Galveston Bay, Texas**: 101 neighborhoods, about 0.35 million residents.
 - **Seattle, Washington**: 190 neighborhoods, about 0.79 million residents.
 
 Each city has three map views: sinking ground, flood timing, and which radar (NISAR or the older Sentinel-1) can measure each piece of land.
@@ -47,6 +48,15 @@ Each city has three map views: sinking ground, flood timing, and which radar (NI
 - With nearly eleven months of NISAR data, the noise between neighborhoods is about
   6 mm, lower than in the cities with four months, but still too high to set rates.
 
+## What it found in Galveston Bay
+
+- The fastest sinking of the five: a median of about 2.4 mm a year, and about 11 in
+  the fastest neighborhood.
+- About 1,300 people live on regularly flooded land today. By 2100 in the middle
+  scenario that is about 15,400 with sinking, against about 10,400 from sea level alone.
+- Radar and GPS agree less well here, to about 3.3 mm a year across 15 stations, so
+  each neighborhood's rate carries a wide uncertainty.
+
 ## What it found in Seattle
 
 - Neighborhoods are sinking at a median of about 1.5 mm a year (most between 1 and
@@ -82,7 +92,7 @@ Every figure above is produced by the pipeline from the sources in `DATA_SOURCES
 ```
 python -m venv .venv && .venv/bin/pip install earthaccess geopandas rasterio h5py scipy pillow requests
 cd pipeline
-export SC_CITY=hampton-roads   # or charleston, miami, seattle; cities are defined in pipeline/config.py
+export SC_CITY=hampton-roads   # or charleston, miami, galveston, seattle; cities are defined in pipeline/config.py
 for s in s01_boundaries s01b_blocks s02_elevation s03_water s04_gps s05a_opera_fetch s06_flood s05b_sinking s06_flood s07_nisar s08_build; do ../.venv/bin/python $s.py; done
 cd ../site && python -m http.server 8000
 ```

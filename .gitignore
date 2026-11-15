@@ -10,3 +10,5 @@ data/work/
 .env
 # Internal planning doc
 *handoff*.pdf
+data/sources.lock
+data/sources.tmp

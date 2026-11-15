@@ -1,4 +1,74 @@
 {
+  "aberdeen/census_blocks": {
+    "bytes": 491520,
+    "file": "data/work/aberdeen/blocks.gpkg",
+    "licence": "US Government work, public domain",
+    "note": "Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Aberdeen: 2020 Census blocks and population (populated blocks only)",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query"
+  },
+  "aberdeen/census_tracts_027": {
+    "bytes": 921533,
+    "file": "data/raw/aberdeen/tracts_027.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Aberdeen: 2020 Census tracts and population, Grays Harbor County",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='53' AND COUNTY='027'&f=geojson"
+  },
+  "aberdeen/ngl_midas_gps": {
+    "bytes": 5021832,
+    "file": "data/raw/aberdeen/midas.IGS14.txt",
+    "licence": "Open; cite Blewitt et al. 2016, doi:10.1002/2015JB012552",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Aberdeen: Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14)",
+    "url": "https://geodesy.unr.edu/velocities/midas.IGS14.txt"
+  },
+  "aberdeen/opera_disp_s1": {
+    "bytes": null,
+    "file": null,
+    "licence": "NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA",
+    "note": "Short name OPERA_L3_DISP-S1_V1 at the Alaska Satellite Facility DAAC (Earthdata login). Only the chunks over the study area were read from each ~440 MB file; subset stored on a 90 m grid in data/work/aberdeen/opera/ (8 MB).",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Aberdeen: NASA OPERA L3 DISP-S1 v1 surface displacement, frame F09164 (194 dates, 20160729 to 20251121), study-area subset",
+    "url": "https://search.asf.alaska.edu/#/?dataset=OPERA-S1&productTypes=DISP-S1"
+  },
+  "aberdeen/opera_disp_s1_static": {
+    "bytes": 18719714,
+    "file": "data/raw/aberdeen/opera_F09164_los_enu.tif",
+    "licence": "NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA",
+    "note": "Used to convert line-of-sight motion to vertical. doi:10.5067/SNWG/OPL3DISPS1-V1",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Aberdeen: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F09164",
+    "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L3_DISP-S1-STATIC_V1/OPERA_L3_DISP-S1-STATIC_F09164_20140403_S1A_v1.0/OPERA_L3_DISP-S1-STATIC_F09164_20140403_S1A_v1.0_line_of_sight_enu.tif"
+  },
+  "aberdeen/osm_places": {
+    "bytes": 2474,
+    "file": "data/raw/aberdeen/osm_places.json",
+    "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+    "note": "Used only to label census tracts with a familiar nearby place name.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Aberdeen: OpenStreetMap neighbourhood names (labels only)",
+    "url": "https://overpass-api.de/api/interpreter"
+  },
+  "aberdeen/usgs_3dep_dem": {
+    "bytes": 13645146,
+    "file": "data/work/aberdeen/dem.tif",
+    "licence": "US Government work, public domain",
+    "note": "Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Aberdeen: USGS 3DEP bare-earth elevation, resampled to 10 m (2 tiles)",
+    "url": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage"
+  },
   "charleston/census_blocks": {
     "bytes": 8036352,
     "file": "data/work/charleston/blocks.gpkg",
@@ -179,6 +249,16 @@
     "title": "Galveston: Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14)",
     "url": "https://geodesy.unr.edu/velocities/midas.IGS14.txt"
   },
+  "galveston/nisar_gunw": {
+    "bytes": null,
+    "file": null,
+    "licence": "NASA open data (CC0); NASA-ISRO NISAR mission",
+    "note": "Short name NISAR_L2_GUNW_PROVISIONAL_V1 at the Alaska Satellite Facility DAAC (Earthdata login), doi:10.5067/NIL2GUNW-P1. Only the study-area window of five layers was read from each ~2.2 GB file (33 MB kept in data/work/galveston/nisar/). Granules: NISAR_L2_PR_GUNW_024_012_D_074_025_4000_SH_20260627T010224_20260627T010303_20260709T010224_20260709T010302_P05023_N_F_J_001; NISAR_L2_PR_GUNW_025_012_D_074_026_4000_SH_20260709T010224_20260709T010302_20260721T010223_20260721T010257_P05023_N_F_J_001; NISAR_L2_PR_GUNW_026_012_D_074_028_4000_SH_20260721T010223_20260721T010257_20260814T010222_20260814T010256_P05023_N_F_J_001; NISAR_L2_PR_GUNW_028_012_D_074_029_4000_SH_20260814T010222_20260814T010256_20260826T010221_20260826T010300_P05023_N_F_J_001; NISAR_L2_PR_GUNW_029_012_D_074_030_4000_SH_20260826T010221_20260826T010300_20260907T010221_20260907T010300_P05023_N_F_J_001; NISAR_L2_PR_GUNW_030_012_D_074_031_4000_SH_20260907T010221_20260907T010300_20260919T010221_20260919T010300_P05023_F_F_J_001; NISAR_L2_PR_GUNW_031_012_D_074_032_4000_SH_20260919T010221_20260919T010300_20261001T010221_20261001T010256_P05023_N_F_J_001; NISAR_L2_PR_GUNW_032_012_D_074_033_4000_SH_20261001T010221_20261001T010256_20261013T010221_20261013T010256_P05023_N_F_J_001",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Galveston: NISAR L2 Geocoded Unwrapped Interferograms (provisional), track/frame 012_D_074, 8 pairs 20260627 to 20261013, study-area subset",
+    "url": "https://search.asf.alaska.edu/#/?dataset=NISAR&productTypes=GUNW"
+  },
   "galveston/noaa_datums": {
     "bytes": 1982,
     "file": "data/raw/galveston/noaa_datums.json",
@@ -228,6 +308,16 @@
     "status": "ok",
     "title": "Galveston: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F08882",
     "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L3_DISP-S1-STATIC_V1/OPERA_L3_DISP-S1-STATIC_F08882_20140403_S1A_v1.0/OPERA_L3_DISP-S1-STATIC_F08882_20140403_S1A_v1.0_line_of_sight_enu.tif"
+  },
+  "galveston/osm_places": {
+    "bytes": 12621,
+    "file": "data/raw/galveston/osm_places.json",
+    "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+    "note": "Used only to label census tracts with a familiar nearby place name.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Galveston: OpenStreetMap neighbourhood names (labels only)",
+    "url": "https://overpass-api.de/api/interpreter"
   },
   "galveston/usgs_3dep_dem": {
     "bytes": 60940700,
@@ -519,6 +609,16 @@
     "title": "Miami: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F12638",
     "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L3_DISP-S1-STATIC_V1/OPERA_L3_DISP-S1-STATIC_F12638_20140403_S1A_v1.0/OPERA_L3_DISP-S1-STATIC_F12638_20140403_S1A_v1.0_line_of_sight_enu.tif"
   },
+  "miami/osm_places": {
+    "bytes": 24734,
+    "file": "data/raw/miami/osm_places.json",
+    "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+    "note": "Used only to label census tracts with a familiar nearby place name.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Miami: OpenStreetMap neighbourhood names (labels only)",
+    "url": "https://overpass-api.de/api/interpreter"
+  },
   "miami/usgs_3dep_dem": {
     "bytes": 18148914,
     "file": "data/work/miami/dem.tif",
@@ -527,6 +627,76 @@
     "retrieved": "2026-11-14",
     "status": "ok",
     "title": "Miami: USGS 3DEP bare-earth elevation, resampled to 10 m (4 tiles)",
+    "url": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage"
+  },
+  "olympia/census_blocks": {
+    "bytes": 905216,
+    "file": "data/work/olympia/blocks.gpkg",
+    "licence": "US Government work, public domain",
+    "note": "Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Olympia: 2020 Census blocks and population (populated blocks only)",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query"
+  },
+  "olympia/census_tracts_067": {
+    "bytes": 1012696,
+    "file": "data/raw/olympia/tracts_067.geojson",
+    "licence": "US Government work, public domain",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Olympia: 2020 Census tracts and population, Thurston County",
+    "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='53' AND COUNTY='067'&f=geojson"
+  },
+  "olympia/ngl_midas_gps": {
+    "bytes": 5021832,
+    "file": "data/raw/olympia/midas.IGS14.txt",
+    "licence": "Open; cite Blewitt et al. 2016, doi:10.1002/2015JB012552",
+    "note": "",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Olympia: Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14)",
+    "url": "https://geodesy.unr.edu/velocities/midas.IGS14.txt"
+  },
+  "olympia/opera_disp_s1": {
+    "bytes": null,
+    "file": null,
+    "licence": "NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA",
+    "note": "Short name OPERA_L3_DISP-S1_V1 at the Alaska Satellite Facility DAAC (Earthdata login). Only the chunks over the study area were read from each ~440 MB file; subset stored on a 90 m grid in data/work/olympia/opera/ (9 MB).",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Olympia: NASA OPERA L3 DISP-S1 v1 surface displacement, frame F03322 (164 dates, 20160808 to 20250914), study-area subset",
+    "url": "https://search.asf.alaska.edu/#/?dataset=OPERA-S1&productTypes=DISP-S1"
+  },
+  "olympia/opera_disp_s1_static": {
+    "bytes": 18509817,
+    "file": "data/raw/olympia/opera_F03322_los_enu.tif",
+    "licence": "NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA",
+    "note": "Used to convert line-of-sight motion to vertical. doi:10.5067/SNWG/OPL3DISPS1-V1",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Olympia: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F03322",
+    "url": "https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L3_DISP-S1-STATIC_V1/OPERA_L3_DISP-S1-STATIC_F03322_20140403_S1A_v1.0/OPERA_L3_DISP-S1-STATIC_F03322_20140403_S1A_v1.0_line_of_sight_enu.tif"
+  },
+  "olympia/osm_places": {
+    "bytes": 1115,
+    "file": "data/raw/olympia/osm_places.json",
+    "licence": "ODbL 1.0, (c) OpenStreetMap contributors",
+    "note": "Used only to label census tracts with a familiar nearby place name.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Olympia: OpenStreetMap neighbourhood names (labels only)",
+    "url": "https://overpass-api.de/api/interpreter"
+  },
+  "olympia/usgs_3dep_dem": {
+    "bytes": 9167284,
+    "file": "data/work/olympia/dem.tif",
+    "licence": "US Government work, public domain",
+    "note": "Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.",
+    "retrieved": "2026-11-14",
+    "status": "ok",
+    "title": "Olympia: USGS 3DEP bare-earth elevation, resampled to 10 m (1 tiles)",
     "url": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage"
   },
   "seattle/census_blocks": {

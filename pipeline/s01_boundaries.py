@@ -4,6 +4,7 @@ Source: US Census Bureau TIGERweb (2020 Census tracts, POP100 = 2020 population)
 Names: OpenStreetMap place nodes, used only to give each tract a readable label.
 """
 import json
+import time
 
 import geopandas as gpd
 import pandas as pd
@@ -15,6 +16,7 @@ from config import CITY, RAW, WORK
 
 TIGER = "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query"
 OVERPASS = "https://overpass-api.de/api/interpreter"
+OVERPASS_MIRROR = "https://overpass.kumi.systems/api/interpreter"
 
 
 def get_tracts():
@@ -55,9 +57,19 @@ def get_places():
     out;"""
     path = RAW / "osm_places.json"
     if not path.exists():
-        r = requests.post(OVERPASS, data={"data": q}, headers=UA, timeout=180)
-        r.raise_for_status()
-        path.write_bytes(r.content)
+        last = None
+        for url in (OVERPASS, OVERPASS_MIRROR, OVERPASS):   # the public server is often busy; try a mirror, then once more
+            try:
+                r = requests.post(url, data={"data": q}, headers=UA, timeout=180)
+                r.raise_for_status()
+                json.loads(r.content)["elements"]
+                path.write_bytes(r.content)
+                break
+            except Exception as e:
+                last = e
+                time.sleep(5)
+        else:
+            raise RuntimeError(f"place-name service unavailable: {last}")
     record_source(
         "osm_places",
         title="OpenStreetMap neighbourhood names (labels only)",

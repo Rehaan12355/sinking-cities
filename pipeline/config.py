@@ -100,6 +100,43 @@ CITIES = {
         "why": "The Galveston Bay shore sank substantially during the twentieth century as groundwater, oil and gas were pumped from beneath it, "
                "and the island and bay towns sit only a little above the tide. Storm surge, the larger danger here, is not part of this map.",
     },
+    "aberdeen": {
+        "name": "Aberdeen & Hoquiam, Washington",
+        "short_name": "Aberdeen",
+        "state_fips": "53",
+        "counties": {"027": "Grays Harbor County"},
+        "tide_station": "9441187",
+        "tide_station_name": "Aberdeen, WA",
+        # The Aberdeen gauge has no flood-day count, so the nearest gauge that does supplies it.
+        "htf_station": "9440910",
+        "htf_station_name": "Toke Point, WA",
+        "psmsl_id": 1354,
+        "projection_note": "Sea level projections are for the Toke Point gauge on Willapa Bay, 31 km away, the nearest one in NASA's projection tool.",
+        "utm_epsg": 32610,
+        "bbox": (-124.00, 46.93, -123.72, 47.03),
+        "opera_frame": "F09164",
+        "nisar_track_frame": "_172_D_065_",
+        "why": "Aberdeen and Hoquiam are built on filled tide flats where the Chehalis, Wishkah and Hoquiam rivers meet Grays Harbor, only a little "
+               "above high tide. River floods and storm surge add to the tidal risk here and are not part of this map.",
+    },
+    "olympia": {
+        "name": "Olympia, Washington",
+        "short_name": "Olympia",
+        "state_fips": "53",
+        "counties": {"067": "Thurston County"},
+        "tide_station": "9446969",
+        "tide_station_name": "Olympia, WA",
+        "htf_station": "9447130",
+        "htf_station_name": "Seattle, WA",
+        "psmsl_id": 127,
+        "projection_note": "Sea level projections are for the Seattle gauge, 75 km away, the nearest one in NASA's projection tool.",
+        "utm_epsg": 32610,
+        "bbox": (-122.98, 46.98, -122.82, 47.10),
+        "opera_frame": "F03322",
+        "nisar_track_frame": "_172_D_065_",
+        "why": "Downtown Olympia sits on fill at the head of Budd Inlet, where Puget Sound's tides are at their largest, and the city already plans "
+               "for sea level rise. Capitol Lake is held back by a tide gate that this map does not model.",
+    },
 }
 
 CITY_ID = os.environ.get("SC_CITY", "hampton-roads")

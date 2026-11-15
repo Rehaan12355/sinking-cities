@@ -24,26 +24,50 @@ PD = "US Government work, public domain"
 def main():
     st = CITY["tide_station"]
     p_dat = fetch(MD.format(st=st, what="datums"), "noaa_datums.json", params={"units": "metric"})
-    p_fl = fetch(MD.format(st=st, what="floodlevels"), "noaa_floodlevels.json", params={"units": "metric"})
-    p_htf = fetch(HTF, "noaa_htf_annual.json", params={"station": st})
+    try:
+        p_fl = fetch(MD.format(st=st, what="floodlevels"), "noaa_floodlevels.json", params={"units": "metric"})
+    except RuntimeError:        # small gauges have no flood-level page at all
+        p_fl = None
+    # Small gauges have no flood-day count of their own; a named nearby gauge stands in for that one figure.
+    htf_st = CITY.get("htf_station", st)
+    p_htf = fetch(HTF, "noaa_htf_annual.json", params={"station": htf_st})
     p_ar6 = fetch(AR6, "nasa_ar6_projection.json", params={"psmsl_id": CITY["psmsl_id"]})
     record_source("noaa_datums", title=f"NOAA tidal datums, station {st}", url=MD.format(st=st, what="datums"), licence=PD, path=p_dat)
-    record_source("noaa_floodlevels", title=f"NOAA high-tide-flood thresholds, station {st}", url=MD.format(st=st, what="floodlevels"), licence=PD, path=p_fl)
-    record_source("noaa_htf_annual", title=f"NOAA observed annual high-tide-flood days, station {st}", url=f"{HTF}?station={st}", licence=PD, path=p_htf)
+    if p_fl is not None:
+        record_source("noaa_floodlevels", title=f"NOAA high-tide-flood thresholds, station {st}", url=MD.format(st=st, what="floodlevels"), licence=PD, path=p_fl)
+    record_source("noaa_htf_annual", title=f"NOAA observed annual high-tide-flood days, station {htf_st}", url=f"{HTF}?station={htf_st}", licence=PD, path=p_htf)
     record_source("nasa_ar6_sea_level", title=f"NASA Sea Level Projection Tool (IPCC AR6), PSMSL {CITY['psmsl_id']}",
                   url=f"{AR6}?psmsl_id={CITY['psmsl_id']}", licence="CC BY 4.0 (IPCC AR6 sea level projections, Garner et al. 2021)", path=p_ar6,
                   note="Data service behind sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool. Medium-confidence projections, relative to 1995-2014.")
 
     dat = {d["name"]: d["value"] for d in json.loads(p_dat.read_text())["datums"]}
-    fl = json.loads(p_fl.read_text())
+    fl = json.loads(p_fl.read_text()) if p_fl is not None else {}
     navd = dat["NAVD88"]
+    notes = []
+    if fl.get("nos_minor") is not None:
+        minor, moderate = fl["nos_minor"], fl["nos_moderate"]
+    else:
+        # NOAA publishes no threshold for this gauge, so we apply NOAA's own formula
+        # (Sweet et al. 2018, NOAA Technical Report NOS CO-OPS 086): the minor level is
+        # 0.50 m plus 4% of the tide range above mean higher high water.
+        tide_range = dat["MHHW"] - dat["MLLW"]
+        minor = dat["MHHW"] + 0.50 + 0.04 * tide_range
+        moderate = dat["MHHW"] + 0.80 + 0.03 * tide_range
+        notes.append(f"NOAA lists no flood threshold for the {CITY['tide_station_name']} gauge, so the threshold here is worked out from that gauge's tide range "
+                     "with NOAA's published formula (Sweet et al. 2018).")
+    if htf_st != st:
+        notes.append(f"The count of flood days a year comes from the nearest gauge that has one, {CITY['htf_station_name']}.")
+    if CITY.get("projection_note"):
+        notes.append(CITY["projection_note"])
     out = {
         "station": st,
         "station_name": CITY["tide_station_name"],
+        "htf_station_name": CITY.get("htf_station_name", CITY["tide_station_name"]),
+        "notes": " ".join(notes),
         "mhhw_navd88_m": round(dat["MHHW"] - navd, 3),
         "msl_navd88_m": round(dat["MSL"] - navd, 3),
-        "htf_minor_navd88_m": round(fl["nos_minor"] - navd, 3),
-        "htf_moderate_navd88_m": round(fl["nos_moderate"] - navd, 3),
+        "htf_minor_navd88_m": round(minor - navd, 3),
+        "htf_moderate_navd88_m": round(moderate - navd, 3),
     }
 
     # The current year is still in progress, so it is left out of the counts.

@@ -31,7 +31,7 @@
 
   <h2>Why this place</h2>
   <p><span data-k="why"></span></p>
-  <p>The tide passed NOAA's flood threshold at <span data-k="station"></span> on an average of <b><span data-k="days"></span> days a year</b> from <span data-k="y0"></span> to <span data-k="y1"></span>. About <span data-k="pop"></span> people live in the <span data-k="ntracts"></span> neighborhoods mapped here.</p>
+  <p>The tide passed NOAA's flood threshold at <span data-k="station"></span> on an average of <b><span data-k="days"></span> days a year</b> from <span data-k="y0"></span> to <span data-k="y1"></span>. About <span data-k="pop"></span> people live in the <span data-k="ntracts"></span> neighborhoods mapped here. <span data-k="wnotes"></span></p>
 
   <h2>Step 1: measure sinking from space</h2>
   <p>Radar satellites send a microwave pulse to the ground and record the echo. Comparing the echoes from two passes over the same spot reveals whether the ground moved toward or away from the satellite, down to millimeters. This technique is called radar interferometry, or InSAR.</p>
@@ -121,7 +121,7 @@ fetch("data/cities.json").then((r) => r.json()).then((cs) => {
   const v = {
     name: c.name, why: c.why, ntracts: c.n_tracts, ndates: R.n_dates, first: month(R.first_date), last: month(R.last_date),
     rejected: (R.dates_rejected || []).length, gpsrms: R.tie_sigma_mm_yr != null ? R.tie_sigma_mm_yr.toFixed(1) : "", npairs: N.n_pairs, nnoise: N.neighborhood_scatter_mm != null ? Math.round(N.neighborhood_scatter_mm) : "",
-    station: c.water.station_name, days: c.water.htf_recent_mean_days, y0: c.water.htf_recent_years[0], y1: c.water.htf_recent_years[1],
+    station: c.water.htf_station_name || c.water.station_name, wnotes: c.water.notes || "", days: c.water.htf_recent_mean_days, y0: c.water.htf_recent_years[0], y1: c.water.htf_recent_years[1],
     pop: (c.population / 1e6).toFixed(2) + " million", thr: c.water.htf_minor_navd88_m.toFixed(2), vlm: c.water.ar6_gauge_vlm_mm_yr,
     share: Math.round(c.tract_flood_share * 100),
   };

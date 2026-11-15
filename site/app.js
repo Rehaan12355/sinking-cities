@@ -560,7 +560,7 @@
     h += N && N.ok ? `<p>${N.summary}</p>` : `<div class="pending">${N && N.note ? N.note : "The NISAR comparison has not been run yet."}</div>`;
     const d = city.water.htf_days.filter((x) => x.year >= 1960);
     const mx = Math.max(...d.map((x) => x.days)), bw = 9, H = 120;
-    h += `<h3>It has already started</h3><p>Days each year the tide passed NOAA's flood threshold at ${city.water.station_name}. Average for ${city.water.htf_recent_years[0]} to ${city.water.htf_recent_years[1]}: ${city.water.htf_recent_mean_days} days.</p>
+    h += `<h3>It has already started</h3><p>Days each year the tide passed NOAA's flood threshold at ${city.water.htf_station_name || city.water.station_name}. Average for ${city.water.htf_recent_years[0]} to ${city.water.htf_recent_years[1]}: ${city.water.htf_recent_mean_days} days.</p>
       <svg viewBox="0 0 ${d.length * bw} ${H + 16}" width="100%" role="img" aria-label="High-tide flood days per year">
       ${d.map((x, i) => `<rect x="${i * bw}" y="${H - (x.days / mx) * H}" width="${bw - 2}" height="${(x.days / mx) * H}" fill="#2b8fd6"><title>${x.year}: ${x.days} days</title></rect>${x.year % 10 === 0 ? `<text x="${i * bw}" y="${H + 13}" font-size="10" fill="#9aa2a9">${x.year}</text>` : ""}`).join("")}</svg>
       <p><a href="methods.html?city=${cid}">Read the full method and its limits</a></p>`;
