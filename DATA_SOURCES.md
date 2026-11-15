@@ -20,6 +20,16 @@ is unavailable the site says so instead of showing a value.
 | `charleston/opera_disp_s1_static` | Charleston: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F40029 | 2026-11-14 | 19.88 MB | NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA | ok |
 | `charleston/osm_places` | Charleston: OpenStreetMap neighbourhood names (labels only) | 2026-11-14 | 0.07 MB | ODbL 1.0, (c) OpenStreetMap contributors | ok |
 | `charleston/usgs_3dep_dem` | Charleston: USGS 3DEP bare-earth elevation, resampled to 10 m (9 tiles) | 2026-11-14 | 50.23 MB | US Government work, public domain | ok |
+| `galveston/census_blocks` | Galveston: 2020 Census blocks and population (populated blocks only) | 2026-11-14 | 3.17 MB | US Government work, public domain | ok |
+| `galveston/census_tracts_167` | Galveston: 2020 Census tracts and population, Galveston County | 2026-11-14 | 1.08 MB | US Government work, public domain | ok |
+| `galveston/nasa_ar6_sea_level` | Galveston: NASA Sea Level Projection Tool (IPCC AR6), PSMSL 161 | 2026-11-14 | 0.09 MB | CC BY 4.0 (IPCC AR6 sea level projections, Garner et al. 2021) | ok |
+| `galveston/ngl_midas_gps` | Galveston: Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14) | 2026-11-14 | 5.02 MB | Open; cite Blewitt et al. 2016, doi:10.1002/2015JB012552 | ok |
+| `galveston/noaa_datums` | Galveston: NOAA tidal datums, station 8771450 | 2026-11-14 | 0.00 MB | US Government work, public domain | ok |
+| `galveston/noaa_floodlevels` | Galveston: NOAA high-tide-flood thresholds, station 8771450 | 2026-11-14 | 0.00 MB | US Government work, public domain | ok |
+| `galveston/noaa_htf_annual` | Galveston: NOAA observed annual high-tide-flood days, station 8771450 | 2026-11-14 | 0.03 MB | US Government work, public domain | ok |
+| `galveston/opera_disp_s1` | Galveston: NASA OPERA L3 DISP-S1 v1 surface displacement, frame F08882 (269 dates, 20161009 to 20260219), study-area subset | 2026-11-14 | n/a | NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA | ok |
+| `galveston/opera_disp_s1_static` | Galveston: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F08882 | 2026-11-14 | 19.98 MB | NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA | ok |
+| `galveston/usgs_3dep_dem` | Galveston: USGS 3DEP bare-earth elevation, resampled to 10 m (12 tiles) | 2026-11-14 | 60.94 MB | US Government work, public domain | ok |
 | `hampton-roads/census_blocks` | Hampton Roads: 2020 Census blocks and population (populated blocks only) | 2026-11-14 | 11.13 MB | US Government work, public domain | ok |
 | `hampton-roads/census_tracts_550` | Hampton Roads: 2020 Census tracts and population, Chesapeake | 2026-11-14 | 0.64 MB | US Government work, public domain | ok |
 | `hampton-roads/census_tracts_650` | Hampton Roads: 2020 Census tracts and population, Hampton | 2026-11-14 | 0.35 MB | US Government work, public domain | ok |
@@ -38,6 +48,17 @@ is unavailable the site says so instead of showing a value.
 | `hampton-roads/opera_disp_s1_static` | Hampton Roads: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F00833 | 2026-11-14 | 18.90 MB | NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA | ok |
 | `hampton-roads/osm_places` | Hampton Roads: OpenStreetMap neighbourhood names (labels only) | 2026-11-14 | 0.17 MB | ODbL 1.0, (c) OpenStreetMap contributors | ok |
 | `hampton-roads/usgs_3dep_dem` | Hampton Roads: USGS 3DEP bare-earth elevation, resampled to 10 m (16 tiles) | 2026-11-14 | 106.73 MB | US Government work, public domain | ok |
+| `miami/census_blocks` | Miami: 2020 Census blocks and population (populated blocks only) | 2026-11-14 | 3.87 MB | US Government work, public domain | ok |
+| `miami/census_tracts_086` | Miami: 2020 Census tracts and population, Miami-Dade County | 2026-11-14 | 2.43 MB | US Government work, public domain | ok |
+| `miami/nasa_ar6_sea_level` | Miami: NASA Sea Level Projection Tool (IPCC AR6), PSMSL 1858 | 2026-11-14 | 0.09 MB | CC BY 4.0 (IPCC AR6 sea level projections, Garner et al. 2021) | ok |
+| `miami/ngl_midas_gps` | Miami: Nevada Geodetic Laboratory MIDAS GPS velocities (IGS14) | 2026-11-14 | 5.02 MB | Open; cite Blewitt et al. 2016, doi:10.1002/2015JB012552 | ok |
+| `miami/nisar_gunw` | Miami: NISAR L2 Geocoded Unwrapped Interferograms (provisional), track/frame 170_D_075, 25 pairs 20251122 to 20261012, study-area subset | 2026-11-14 | n/a | NASA open data (CC0); NASA-ISRO NISAR mission | ok |
+| `miami/noaa_datums` | Miami: NOAA tidal datums, station 8723214 | 2026-11-14 | 0.00 MB | US Government work, public domain | ok |
+| `miami/noaa_floodlevels` | Miami: NOAA high-tide-flood thresholds, station 8723214 | 2026-11-14 | 0.00 MB | US Government work, public domain | ok |
+| `miami/noaa_htf_annual` | Miami: NOAA observed annual high-tide-flood days, station 8723214 | 2026-11-14 | 0.03 MB | US Government work, public domain | ok |
+| `miami/opera_disp_s1` | Miami: NASA OPERA L3 DISP-S1 v1 surface displacement, frame F12638 (254 dates, 20160927 to 20260207), study-area subset | 2026-11-14 | n/a | NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA | ok |
+| `miami/opera_disp_s1_static` | Miami: NASA OPERA L3 DISP-S1-STATIC v1 line-of-sight geometry, frame F12638 | 2026-11-14 | 20.43 MB | NASA open data (CC0); contains modified Copernicus Sentinel-1 data, ESA | ok |
+| `miami/usgs_3dep_dem` | Miami: USGS 3DEP bare-earth elevation, resampled to 10 m (4 tiles) | 2026-11-14 | 18.15 MB | US Government work, public domain | ok |
 | `seattle/census_blocks` | Seattle: 2020 Census blocks and population (populated blocks only) | 2026-11-14 | 3.25 MB | US Government work, public domain | ok |
 | `seattle/census_tracts_033` | Seattle: 2020 Census tracts and population, Seattle area | 2026-11-14 | 4.38 MB | US Government work, public domain | ok |
 | `seattle/nasa_ar6_sea_level` | Seattle: NASA Sea Level Projection Tool (IPCC AR6), PSMSL 127 | 2026-11-14 | 0.09 MB | CC BY 4.0 (IPCC AR6 sea level projections, Garner et al. 2021) | ok |
@@ -74,6 +95,21 @@ is unavailable the site says so instead of showing a value.
   Used only to label census tracts with a familiar nearby place name.
 - **`charleston/usgs_3dep_dem`**: <https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage>  
   Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.
+- **`galveston/census_blocks`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query>  
+  Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.
+- **`galveston/census_tracts_167`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='48' AND COUNTY='167'&f=geojson>
+- **`galveston/nasa_ar6_sea_level`**: <https://d3qt3aobtsas2h.cloudfront.net/edge/ws/search/projection?psmsl_id=161>  
+  Data service behind sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool. Medium-confidence projections, relative to 1995-2014.
+- **`galveston/ngl_midas_gps`**: <https://geodesy.unr.edu/velocities/midas.IGS14.txt>
+- **`galveston/noaa_datums`**: <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8771450/datums.json>
+- **`galveston/noaa_floodlevels`**: <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8771450/floodlevels.json>
+- **`galveston/noaa_htf_annual`**: <https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station=8771450>
+- **`galveston/opera_disp_s1`**: <https://search.asf.alaska.edu/#/?dataset=OPERA-S1&productTypes=DISP-S1>  
+  Short name OPERA_L3_DISP-S1_V1 at the Alaska Satellite Facility DAAC (Earthdata login). Only the chunks over the study area were read from each ~440 MB file; subset stored on a 90 m grid in data/work/galveston/opera/ (123 MB).
+- **`galveston/opera_disp_s1_static`**: <https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L3_DISP-S1-STATIC_V1/OPERA_L3_DISP-S1-STATIC_F08882_20140403_S1A_v1.0/OPERA_L3_DISP-S1-STATIC_F08882_20140403_S1A_v1.0_line_of_sight_enu.tif>  
+  Used to convert line-of-sight motion to vertical. doi:10.5067/SNWG/OPL3DISPS1-V1
+- **`galveston/usgs_3dep_dem`**: <https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage>  
+  Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.
 - **`hampton-roads/census_blocks`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query>  
   Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.
 - **`hampton-roads/census_tracts_550`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='51' AND COUNTY='550'&f=geojson>
@@ -98,6 +134,23 @@ is unavailable the site says so instead of showing a value.
 - **`hampton-roads/osm_places`**: <https://overpass-api.de/api/interpreter>  
   Used only to label census tracts with a familiar nearby place name.
 - **`hampton-roads/usgs_3dep_dem`**: <https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage>  
+  Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.
+- **`miami/census_blocks`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query>  
+  Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.
+- **`miami/census_tracts_086`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/10/query?where=STATE='12' AND COUNTY='086'&f=geojson>
+- **`miami/nasa_ar6_sea_level`**: <https://d3qt3aobtsas2h.cloudfront.net/edge/ws/search/projection?psmsl_id=1858>  
+  Data service behind sealevel.nasa.gov/ipcc-ar6-sea-level-projection-tool. Medium-confidence projections, relative to 1995-2014.
+- **`miami/ngl_midas_gps`**: <https://geodesy.unr.edu/velocities/midas.IGS14.txt>
+- **`miami/nisar_gunw`**: <https://search.asf.alaska.edu/#/?dataset=NISAR&productTypes=GUNW>  
+  Short name NISAR_L2_GUNW_PROVISIONAL_V1 at the Alaska Satellite Facility DAAC (Earthdata login), doi:10.5067/NIL2GUNW-P1. Only the study-area window of five layers was read from each ~2.2 GB file (21 MB kept in data/work/miami/nisar/). Granules: NISAR_L2_PR_GUNW_005_170_D_075_006_4000_SH_20251122T000440_20251122T000515_20251204T000441_20251204T000515_P05023_N_F_J_001; NISAR_L2_PR_GUNW_006_170_D_075_007_4000_SH_20251204T000441_20251204T000515_20251216T000441_20251216T000516_P05023_N_F_J_001; NISAR_L2_PR_GUNW_007_170_D_075_008_4000_SH_20251216T000441_20251216T000516_20251228T000442_20251228T000517_P05023_N_F_J_001; NISAR_L2_PR_GUNW_008_170_D_075_009_4000_SH_20251228T000442_20251228T000517_20260109T000442_20260109T000517_P05023_N_F_J_001; NISAR_L2_PR_GUNW_009_170_D_075_010_4000_SH_20260109T000442_20260109T000517_20260121T000443_20260121T000518_P05023_N_F_J_001; NISAR_L2_PR_GUNW_010_170_D_075_011_4000_SH_20260121T000443_20260121T000518_20260202T000444_20260202T000518_P05023_N_F_J_001; NISAR_L2_PR_GUNW_011_170_D_075_012_4000_SH_20260202T000444_20260202T000518_20260214T000444_20260214T000519_P05023_N_F_J_001; NISAR_L2_PR_GUNW_012_170_D_075_013_4000_SH_20260214T000444_20260214T000519_20260226T000445_20260226T000519_P05023_N_F_J_001; NISAR_L2_PR_GUNW_013_170_D_075_014_4000_SH_20260226T000445_20260226T000519_20260310T000445_20260310T000520_P05023_N_F_J_001; NISAR_L2_PR_GUNW_014_170_D_075_015_4000_SH_20260310T000445_20260310T000520_20260322T000445_20260322T000520_P05023_N_F_J_001; NISAR_L2_PR_GUNW_015_170_D_075_016_4000_SH_20260322T000445_20260322T000520_20260403T000446_20260403T000520_P05023_N_F_J_001; NISAR_L2_PR_GUNW_016_170_D_075_017_4000_SH_20260403T000446_20260403T000520_20260415T000446_20260415T000520_P05023_N_F_J_001; NISAR_L2_PR_GUNW_017_170_D_075_018_4000_SH_20260415T000446_20260415T000520_20260427T000446_20260427T000520_P05023_F_F_J_001; NISAR_L2_PR_GUNW_018_170_D_075_019_4000_SH_20260427T000446_20260427T000520_20260509T000445_20260509T000520_P05023_N_F_J_001; NISAR_L2_PR_GUNW_019_170_D_075_020_4000_SH_20260509T000445_20260509T000520_20260521T000445_20260521T000519_P05023_N_F_J_001; NISAR_L2_PR_GUNW_020_170_D_075_021_4000_SH_20260521T000445_20260521T000519_20260602T000444_20260602T000518_P05023_N_F_J_001; NISAR_L2_PR_GUNW_021_170_D_075_022_4000_SH_20260602T000444_20260602T000518_20260614T000443_20260614T000518_P05023_N_F_J_001; NISAR_L2_PR_GUNW_022_170_D_075_023_4000_SH_20260614T000443_20260614T000518_20260626T000442_20260626T000517_P05023_N_F_J_001; NISAR_L2_PR_GUNW_023_170_D_075_025_4000_SH_20260626T000442_20260626T000517_20260720T000441_20260720T000516_P05023_N_F_J_001; NISAR_L2_PR_GUNW_025_170_D_075_027_4000_SH_20260720T000441_20260720T000516_20260813T000440_20260813T000514_P05023_N_F_J_001; NISAR_L2_PR_GUNW_027_170_D_075_028_4000_SH_20260813T000440_20260813T000514_20260825T000439_20260825T000514_P05023_N_F_J_001; NISAR_L2_PR_GUNW_028_170_D_075_029_4000_SH_20260825T000439_20260825T000514_20260906T000439_20260906T000514_P05023_N_F_J_001; NISAR_L2_PR_GUNW_029_170_D_075_030_4000_SH_20260906T000439_20260906T000514_20260918T000439_20260918T000513_P05023_F_F_J_001; NISAR_L2_PR_GUNW_030_170_D_075_031_4000_SH_20260918T000439_20260918T000513_20260930T000439_20260930T000513_P05023_N_F_J_001; NISAR_L2_PR_GUNW_031_170_D_075_032_4000_SH_20260930T000439_20260930T000513_20261012T000439_20261012T000514_P05023_N_F_J_001
+- **`miami/noaa_datums`**: <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8723214/datums.json>
+- **`miami/noaa_floodlevels`**: <https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/8723214/floodlevels.json>
+- **`miami/noaa_htf_annual`**: <https://api.tidesandcurrents.noaa.gov/dpapi/prod/webapi/htf/htf_annual.json?station=8723214>
+- **`miami/opera_disp_s1`**: <https://search.asf.alaska.edu/#/?dataset=OPERA-S1&productTypes=DISP-S1>  
+  Short name OPERA_L3_DISP-S1_V1 at the Alaska Satellite Facility DAAC (Earthdata login). Only the chunks over the study area were read from each ~440 MB file; subset stored on a 90 m grid in data/work/miami/opera/ (43 MB).
+- **`miami/opera_disp_s1_static`**: <https://cumulus.asf.earthdatacloud.nasa.gov/OPERA/OPERA_L3_DISP-S1-STATIC_V1/OPERA_L3_DISP-S1-STATIC_F12638_20140403_S1A_v1.0/OPERA_L3_DISP-S1-STATIC_F12638_20140403_S1A_v1.0_line_of_sight_enu.tif>  
+  Used to convert line-of-sight motion to vertical. doi:10.5067/SNWG/OPL3DISPS1-V1
+- **`miami/usgs_3dep_dem`**: <https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer/exportImage>  
   Heights are metres above NAVD88. Dynamic service mosaics the best available lidar-derived DEMs.
 - **`seattle/census_blocks`**: <https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/12/query>  
   Queried per city from TIGERweb layer 'Census 2020 > Census Blocks', field POP100.

@@ -32,10 +32,11 @@ import rasterio
 from pyproj import Transformer
 from rasterio.features import rasterize
 from rasterio.transform import from_origin
-from rasterio.warp import Resampling, reproject
+from PIL import Image
+from rasterio.warp import Resampling, calculate_default_transform, reproject, transform_bounds
 
 from common import record_source
-from config import CITY, WORK
+from config import CITY, SITE_DATA, WORK
 
 SHORT_NAME = "NISAR_L2_GUNW_PROVISIONAL_V1"
 TRACK_FRAME = CITY["nisar_track_frame"]   # one track and frame that covers the whole study area
@@ -112,7 +113,15 @@ def main():
         reproject((1 - sea.read(1)).astype("float32"), landfrac, src_transform=sea.transform, src_crs=sea.crs, dst_transform=tf, dst_crs=crs, resampling=Resampling.average)
     tracts = gpd.read_file(WORK / "tracts.geojson").to_crs(crs)
     tr = rasterize(((g, i + 1) for i, g in enumerate(tracts.geometry)), out_shape=(h, w), transform=tf, dtype="int32")
-    land = (landfrac > 0.5) & (tr > 0)
+    # Lakes and other non-tidal water are not in the tidal water map, so NISAR's own
+    # water mask (first digit of the low byte of its mask layer) removes them as well.
+    nisar_water = ((p0["mask"] & 0xFF) // 100) == 1
+    land = (landfrac > 0.5) & (tr > 0) & ~nisar_water
+    with rasterio.open(WORK / "sink_measured.tif") as src:     # 1 = the cell has its own long-term Sentinel-1 rate
+        s1 = np.zeros((h, w), "uint8")
+        reproject(rasterio.band(src, 1), s1, dst_transform=tf, dst_crs=crs, resampling=Resampling.nearest)
+    s1_meas = (s1 == 1) & land
+    s1_share = float(s1_meas.sum() / land.sum())
 
     # Each pair: phase -> millimetres of vertical motion. The ionosphere screen that
     # ships with the product is removed, then a flat tilted plane, which takes out
@@ -120,6 +129,7 @@ def main():
     yy, xx = np.mgrid[0:h, 0:w]
     total = np.zeros((h, w))
     n_ok = np.zeros((h, w), int)
+    n_flag = np.zeros((h, w), int)
     coh_sum = np.zeros((h, w))
     info = []
     for p in pairs:
@@ -138,6 +148,7 @@ def main():
         up = up - np.median(up[ok])
         total += np.where(ok, up, 0)
         n_ok += ok
+        n_flag += flagged
         coh_sum += np.where(np.isfinite(p["coherence"]), p["coherence"], 0)
         info.append({"reference": str(p["ref"]), "secondary": str(p["sec"]), "granule": str(p["granule"]),
                      "land_measured": round(float(flagged.sum() / land.sum()), 3), "ionosphere_screen_rejected": round(float((flagged & ~ok).sum() / flagged.sum()), 3), "scatter_mm": round(float(1.4826 * np.median(np.abs(up[ok]))), 1)})
@@ -170,7 +181,7 @@ def main():
     per_pair = [i["land_measured"] for i in info]
     typical = float(np.median(per_pair))
     print(f"{days} days; NISAR neighborhood scatter {spread:.1f} mm; OPERA-expected range (5-95%) {exp_range:.2f} mm; correlation {corr:.2f}")
-    print(f"land measured: NISAR typical pair {typical:.1%} (range {min(per_pair):.1%} to {max(per_pair):.1%}), every pair {nis_land:.1%}; OPERA {radar['land_coverage']:.1%}")
+    print(f"land measured: NISAR typical pair {typical:.1%} (range {min(per_pair):.1%} to {max(per_pair):.1%}), every pair {nis_land:.1%}; OPERA {s1_share:.1%}")
 
     def month(d):
         return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][int(d[4:6]) - 1] + " " + d[:4]
@@ -178,30 +189,60 @@ def main():
     summary = (
         f"NISAR's L-band radar passed over {CITY['short_name']} {len(pairs) + 1} times between {month(d0)} and {month(d1)}. "
         f"Adding its {len(pairs)} consecutive interferograms gives the ground motion over those {days} days. "
-        f"In so short a time the long-term rates predict that neighborhoods should differ from each other by only about {exp_range:.1f} mm. "
+        f"Over that time the long-term rates predict that neighborhoods should differ from each other by only about {exp_range:.1f} mm. "
         f"NISAR's neighborhood values scatter by about {spread:.0f} mm. That scatter is the atmosphere and ionosphere delaying the radar signal, not the ground moving, "
-        f"so NISAR cannot yet confirm or contradict the long-term rates. It needs a year or more of passes before the noise averages down to millimeters. "
+        f"so NISAR cannot yet confirm or contradict the long-term rates. It needs a longer record before the noise averages down to millimeters. "
     )
-    if typical > radar["land_coverage"] + 0.10:   # only call it a gain when it clearly is one
+    if typical > s1_share + 0.10:   # only call it a gain when it clearly is one
         summary += (
             f"What NISAR shows already is reach. In a typical 12-day pair it returned a measurement over {typical:.0%} of the land in these neighborhoods "
-            f"(between {min(per_pair):.0%} and {max(per_pair):.0%}), where the Sentinel-1 record gives a reliable long-term rate over {radar['land_coverage']:.0%}. "
+            f"(between {min(per_pair):.0%} and {max(per_pair):.0%}), where the Sentinel-1 record gives a reliable long-term rate over {s1_share:.0%}. "
             f"Each figure uses its own product's quality flags, so this is not a like-for-like test, but it points to NISAR filling in marsh edges and wooded ground that are blank today."
         )
     else:
         summary += (
             f"In a typical 12-day pair NISAR returned a measurement over {typical:.0%} of the land in these neighborhoods, "
-            f"and the Sentinel-1 record gives a reliable long-term rate over {radar['land_coverage']:.0%}. Each figure uses its own product's quality flags, "
+            f"and the Sentinel-1 record gives a reliable long-term rate over {s1_share:.0%}. Each figure uses its own product's quality flags, "
             f"so the two are about level here: in a built-up city both radars see most of the ground."
         )
     out = {
         "ok": True, "summary": summary, "product": "NISAR L2 GUNW (provisional)", "doi": str(p0["doi"]), "track_frame": TRACK_FRAME.strip("_"),
         "band": "L", "polarization": POL, "first_date": d0, "last_date": d1, "days": days, "n_pairs": len(pairs),
         "neighborhood_scatter_mm": round(spread, 1), "expected_range_mm": round(exp_range, 2), "correlation": round(corr, 2),
-        "land_measured_typical_pair": round(typical, 3), "land_measured_every_pair": round(nis_land, 3), "opera_land_measured": radar["land_coverage"],
+        "land_measured_typical_pair": round(typical, 3), "land_measured_every_pair": round(nis_land, 3), "opera_land_measured": round(s1_share, 3),
         "n_neighborhoods_compared": len(both),
         "pairs": info,
     }
+
+    # --- where each radar can measure the ground -----------------------------
+    # NISAR: the product returned an unwrapped measurement in at least two thirds of
+    # its pairs. Sentinel-1: the cell has its own long-term rate from step 5b.
+    need = int(np.ceil(len(pairs) * 2 / 3))
+    nis_meas = (n_flag >= need) & land
+    cls = np.zeros((h, w), "uint8")           # 0 = not land in these neighborhoods
+    cls[land] = 4                             # neither
+    cls[s1_meas & ~nis_meas] = 3              # Sentinel-1 only
+    cls[nis_meas & ~s1_meas] = 2              # NISAR only
+    cls[nis_meas & s1_meas] = 1               # both
+    n_land = int(land.sum())
+    share = {k: round(float((cls == v).sum() / n_land), 3) for k, v in (("both", 1), ("nisar_only", 2), ("sentinel1_only", 3), ("neither", 4))}
+    print("land by radar:", share, f"(NISAR counted when measured in {need} of {len(pairs)} pairs)")
+    tract_cov = {}
+    for i, geoid in enumerate(tracts["GEOID"]):
+        cells = (tr == i + 1) & land
+        if cells.sum():
+            tract_cov[geoid] = [round(float((nis_meas & cells).sum() / cells.sum()), 2), round(float((s1_meas & cells).sum() / cells.sum()), 2)]
+    tfw, ww, hw = calculate_default_transform(crs, "EPSG:3857", w, h, *rasterio.transform.array_bounds(h, w, tf))
+    web = np.zeros((hw, ww), "uint8")
+    reproject(cls, web, src_transform=tf, src_crs=crs, dst_transform=tfw, dst_crs="EPSG:3857", resampling=Resampling.nearest)
+    colours = {1: (63, 160, 150), 2: (255, 200, 87), 3: (120, 135, 160), 4: (58, 63, 69)}   # both, NISAR only, Sentinel-1 only, neither
+    rgba = np.zeros((hw, ww, 4), np.uint8)
+    for v, c in colours.items():
+        rgba[web == v] = (*c, 255)
+    Image.fromarray(rgba, "RGBA").save(SITE_DATA / "nisar.png", optimize=True)
+    out["coverage"] = dict(share, pairs_needed=need, colours={k: "#%02x%02x%02x" % colours[v] for k, v in (("both", 1), ("nisar_only", 2), ("sentinel1_only", 3), ("neither", 4))})
+    out["coverage_bounds"] = [round(v, 6) for v in transform_bounds("EPSG:3857", "EPSG:4326", *rasterio.transform.array_bounds(hw, ww, tfw))]
+    out["tract_coverage"] = tract_cov
 
     (WORK / "nisar.json").write_text(json.dumps(out, indent=1))
     record_source(

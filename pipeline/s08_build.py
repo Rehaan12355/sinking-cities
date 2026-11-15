@@ -20,8 +20,8 @@ from config import BASE_YEAR, CITIES, CITY, SITE_DATA, SLIDER_END_YEAR, TRACT_FL
 
 NEVER = 255
 MM_YR_TO_IN_DECADE = 10 / 25.4
-# Sinking colour ramp, mm/yr (positive = sinking): stable teal -> yellow -> red.
-RAMP = [(-1.0, (38, 132, 124)), (1.0, (120, 182, 150)), (2.0, (236, 214, 120)), (3.0, (240, 150, 70)), (4.5, (212, 60, 50)), (6.0, (140, 20, 50))]
+# Sinking colour ramp, mm/yr (positive = sinking): stable teal -> sand -> coral -> wine.
+RAMP = [(-1.0, (31, 138, 132)), (1.0, (143, 205, 185)), (2.0, (243, 226, 166)), (3.0, (245, 167, 101)), (4.5, (226, 73, 58)), (6.0, (156, 31, 76))]
 
 
 def to_web(path, resampling, dst_nodata):
@@ -91,6 +91,8 @@ def main():
             "share": m["share"], "people": m["people"],
             "people_ocean": f["ocean_mid"]["people"],
         }
+        if nisar and row["GEOID"] in nisar.get("tract_coverage", {}):
+            p["nisar_cov"], p["s1_cov"] = nisar["tract_coverage"][row["GEOID"]]
         r = rstats.get(row["GEOID"])
         if r and r.get("rate_mm_yr") is not None:
             p["rate"] = r["rate_mm_yr"]
@@ -143,7 +145,7 @@ def main():
         "ramp": [[v, "#%02x%02x%02x" % c] for v, c in RAMP],
         "gps": gps,
         "radar": {k: v for k, v in radar.items() if k != "tracts"} if radar else None,
-        "nisar": nisar,
+        "nisar": {k: v for k, v in nisar.items() if k != "tract_coverage"} if nisar else None,
     }
     (SITE_DATA / "city.json").write_text(json.dumps(rnd(city), separators=(",", ":")))
     # Index of every city that has been built, for the site's city picker.

@@ -68,6 +68,38 @@ CITIES = {
         "why": "Charleston is one of the most frequently flooded cities on the US Atlantic coast. Much of the historic peninsula and the "
                "neighborhoods along its tidal rivers and marshes are built on low, filled ground that the tide can reach directly.",
     },
+    "miami": {
+        "name": "Miami & Miami Beach, Florida",
+        "short_name": "Miami",
+        "state_fips": "12",
+        # Miami-Dade tracts whose centre falls inside the window below.
+        "counties": {"086": "Miami-Dade County"},
+        "tide_station": "8723214",
+        "tide_station_name": "Virginia Key, FL",
+        "psmsl_id": 1858,
+        "utm_epsg": 32617,
+        "bbox": (-80.32, 25.70, -80.11, 25.93),
+        "opera_frame": "F12638",
+        "nisar_track_frame": "_170_D_075_",
+        "why": "Miami and Miami Beach sit on low, porous limestone barely above the tide, and high-tide flooding on dry, sunny days is already "
+               "familiar there. Water can rise through the ground as well as over it, which this map does not capture.",
+    },
+    "galveston": {
+        "name": "Galveston Bay, Texas",
+        "short_name": "Galveston",
+        "state_fips": "48",
+        # Galveston County: the island, Texas City, League City and the west shore of the bay.
+        "counties": {"167": "Galveston County"},
+        "tide_station": "8771450",
+        "tide_station_name": "Galveston Pier 21, TX",
+        "psmsl_id": 161,
+        "utm_epsg": 32615,
+        "bbox": (-95.22, 29.10, -94.72, 29.56),
+        "opera_frame": "F08882",
+        "nisar_track_frame": "_012_D_074_",
+        "why": "The Galveston Bay shore sank substantially during the twentieth century as groundwater, oil and gas were pumped from beneath it, "
+               "and the island and bay towns sit only a little above the tide. Storm surge, the larger danger here, is not part of this map.",
+    },
 }
 
 CITY_ID = os.environ.get("SC_CITY", "hampton-roads")

@@ -210,6 +210,8 @@ def main():
             with rasterio.open(WORK / f"{name}.tif", "w", **p) as dst:
                 dst.write(out, 1)
     p90 = dict(driver="GTiff", height=h, width=w, count=1, dtype="float32", crs=crs, transform=tf90, nodata=np.nan, compress="deflate")
+    with rasterio.open(WORK / "sink_measured.tif", "w", **dict(p90, dtype="uint8", nodata=None)) as dst:   # 1 = this cell has its own rate
+        dst.write(np.isfinite(sink).astype("uint8"), 1)
     with rasterio.open(WORK / "sink_rate_measured.tif", "w", **p90) as dst:   # measured cells only, for the map picture
         dst.write(np.where(np.isfinite(sm) & (ndimage.gaussian_filter(np.isfinite(sink).astype("float32"), 1) > 0.2), sm, np.nan).astype("float32"), 1)
 

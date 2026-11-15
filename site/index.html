@@ -11,14 +11,14 @@
 <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
 <link href="styles.css" rel="stylesheet">
 </head>
-<body>
+<body class="loading">
 <header class="top">
   <a class="brand" href="./">Sinking Cities</a>
   <span class="place" id="place"></span>
   <nav class="top-actions">
-    <button id="story" class="btn btn-solid" type="button">Play the 30-second story</button>
-    <button id="open-check" class="btn" type="button">Check the science</button>
-    <a class="btn" href="methods.html">How it works</a>
+    <button id="open-check" class="link" type="button">Check the science</button>
+    <a class="link" href="methods.html">How it works</a>
+    <button id="story" class="btn btn-solid" type="button"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 2.5v11l9.5-5.5z" fill="currentColor"/></svg>Play the story</button>
   </nav>
 </header>
 
@@ -27,9 +27,16 @@
     <div class="views" role="tablist" aria-label="Map view">
       <button role="tab" id="tab-sinking" aria-selected="false" data-view="sinking">Sinking ground</button>
       <button role="tab" id="tab-flood" aria-selected="true" data-view="flood">Flood timing</button>
+      <button role="tab" id="tab-nisar" aria-selected="false" data-view="nisar" hidden>NISAR's view</button>
     </div>
 
     <section id="notice" class="notice" hidden></section>
+
+    <div id="loading" class="skeleton" aria-label="Loading the map data">
+      <i style="height:2rem;width:85%"></i><i style="height:2rem;width:55%"></i>
+      <i style="height:0.9rem;width:100%;margin-top:1.1rem"></i><i style="height:0.9rem;width:92%"></i><i style="height:0.9rem;width:60%"></i>
+      <i style="height:3rem;width:100%;margin-top:1.6rem"></i><i style="height:3rem;width:100%"></i><i style="height:3rem;width:100%"></i>
+    </div>
 
     <section id="overview">
       <h1 id="headline"></h1>
@@ -45,7 +52,7 @@
       <h2 id="rank-title"></h2>
       <ol id="rank" class="rank"></ol>
       <p id="already" class="hint"></p>
-      <p class="hint">Select any neighborhood on the map for its details.</p>
+      <p class="hint">Point at any neighborhood on the map to preview it, or select it for the full picture.</p>
     </section>
 
     <section id="card" class="card" hidden aria-live="polite"></section>
@@ -61,9 +68,10 @@
 <footer class="tide">
   <div class="tide-year">
     <output id="year-label" for="slider">2026</output>
-    <button id="play" class="btn btn-round" type="button" aria-label="Play">▶</button>
+    <button id="play" class="btn btn-round invite" type="button" aria-label="Play"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 2.5v11l9.5-5.5z" fill="currentColor"/></svg></button>
   </div>
   <div class="tide-slider">
+    <p id="slider-hint" class="slider-hint">Drag to move through time, or press play</p>
     <input id="slider" type="range" min="0" max="74" value="0" step="1" aria-label="Year">
     <div id="ticks" class="ticks" aria-hidden="true"></div>
   </div>

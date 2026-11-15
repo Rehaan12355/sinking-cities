@@ -1,0 +1,19 @@
+{
+  "v": 5,
+  "createdOnFiles": {"v": 1, "at": "2026-11-15T00:16:00Z"},
+  "lists": "css",
+  "format": {"v": 1, "shared": ["project/deck.css"]},
+  "title": "Sinking Cities: judges’ deck",
+  "order": ["cover", "problem", "app", "found", "nisar", "trust", "next"],
+  "cover": "cover",
+  "sections": {
+    "pitch": {"description": "What Sinking Cities is and the problem it answers.", "start": "cover"},
+    "results": {"description": "The app, what it found in three cities, and what NISAR adds.", "start": "app"},
+    "close": {"description": "Why the numbers can be trusted, who uses them, and what comes next.", "start": "trust"}
+  },
+  "faces": {
+    "bricolage-grotesque": {"family": "Bricolage Grotesque", "href": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:wght@400;600&display=swap"},
+    "public-sans": {"family": "Public Sans", "href": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:wght@400;600&display=swap"}
+  },
+  "designSystems": []
+}
